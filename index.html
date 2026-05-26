@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Sherif | Flutter Developer</title>
+    <title>Ahmed Sherif | Senior Software Engineer & Team Lead</title>
     <meta name="description"
-        content="Innovative Flutter Developer with 3+ years of experience building high-quality mobile applications across educational, medical, and ecommerce domains.">
-    <meta name="keywords" content="Flutter Developer, Mobile App Developer, Dart, iOS, Android, Cairo, Egypt">
-    <meta property="og:title" content="Ahmed Sherif | Flutter Developer">
-    <meta property="og:description" content="Building exceptional mobile experiences with Flutter">
+        content="Senior Flutter Developer and Software Team Lead with 4+ years scaling production software across mobile and web. Leading a 6-person team at Orange Bay, owning infrastructure for 26+ projects.">
+    <meta name="keywords"
+        content="Senior Software Engineer, Senior Flutter Developer, Software Team Lead, Full-Stack Engineer, Flutter, Next.js, Supabase, Clean Architecture, BLoC, Cairo, Egypt">
+    <meta property="og:title" content="Ahmed Sherif | Senior Software Engineer & Team Lead">
+    <meta property="og:description"
+        content="Building scalable products across mobile and web. Leading the teams that ship them.">
     <meta property="og:type" content="website">
 
     <!-- Favicon -->
@@ -18,7 +20,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Roboto:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap"
         rel="stylesheet">
 
     <style>
@@ -26,15 +28,21 @@
             --bg-primary: #0a0a0a;
             --bg-secondary: #111111;
             --bg-card: #161616;
+            --bg-elevated: #1c1c1c;
             --text-primary: #f5f5f5;
             --text-secondary: #a0a0a0;
+            --text-tertiary: #6b6b6b;
             --accent: #3b82f6;
+            --accent-warm: #8b5cf6;
             --accent-glow: rgba(59, 130, 246, 0.3);
             --gradient-start: #3b82f6;
             --gradient-end: #8b5cf6;
+            --success: #22c55e;
             --border: rgba(255, 255, 255, 0.08);
+            --border-strong: rgba(255, 255, 255, 0.14);
             --serif: 'Cormorant Garamond', Georgia, serif;
             --sans: 'Inter', system-ui, sans-serif;
+            --mono: 'JetBrains Mono', ui-monospace, monospace;
         }
 
         * {
@@ -183,6 +191,35 @@
             background: var(--accent);
         }
 
+        .hero-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            background: rgba(34, 197, 94, 0.08);
+            border: 1px solid rgba(34, 197, 94, 0.25);
+            border-radius: 100px;
+            font-family: var(--mono);
+            font-size: 0.75rem;
+            color: #4ade80;
+            margin-left: 1rem;
+        }
+
+        .hero-status::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #22c55e;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
         .hero-title {
             font-family: var(--serif);
             font-size: clamp(3rem, 10vw, 7rem);
@@ -191,6 +228,7 @@
             margin-bottom: 2rem;
             opacity: 0;
             animation: fadeSlideUp 0.8s ease 0.15s forwards;
+            letter-spacing: -0.02em;
         }
 
         .hero-title .highlight {
@@ -204,10 +242,11 @@
         .hero-subtitle {
             font-size: 1.25rem;
             color: var(--text-secondary);
-            max-width: 600px;
+            max-width: 640px;
             margin-bottom: 3rem;
             opacity: 0;
             animation: fadeSlideUp 0.8s ease 0.3s forwards;
+            line-height: 1.7;
         }
 
         .hero-cta {
@@ -246,7 +285,7 @@
         .btn-secondary {
             background: transparent;
             color: var(--text-primary);
-            border: 1px solid var(--border);
+            border: 1px solid var(--border-strong);
         }
 
         .btn-secondary:hover {
@@ -255,8 +294,9 @@
         }
 
         .hero-stats {
-            display: flex;
-            gap: 4rem;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
             margin-top: 5rem;
             padding-top: 3rem;
             border-top: 1px solid var(--border);
@@ -271,18 +311,20 @@
         .stat-value {
             font-family: 'Roboto', Arial, sans-serif !important;
             font-style: normal !important;
-            font-size: 3rem;
+            font-size: clamp(2.25rem, 4vw, 3rem);
             font-weight: 700;
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            line-height: 1.1;
         }
 
         .stat-label {
             color: var(--text-secondary);
             font-size: 0.875rem;
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
+            line-height: 1.4;
         }
 
         /* Section Styles */
@@ -294,6 +336,7 @@
 
         .section-header {
             margin-bottom: 4rem;
+            max-width: 720px;
         }
 
         .section-eyebrow {
@@ -319,7 +362,15 @@
             font-family: var(--serif);
             font-size: clamp(2rem, 5vw, 3.5rem);
             font-weight: 400;
-            line-height: 1.2;
+            line-height: 1.15;
+            letter-spacing: -0.01em;
+        }
+
+        .section-lede {
+            color: var(--text-secondary);
+            font-size: 1.05rem;
+            margin-top: 1.25rem;
+            line-height: 1.7;
         }
 
         /* About Section */
@@ -364,15 +415,22 @@
 
         .about-text h2 {
             font-family: var(--serif);
-            font-size: 2.5rem;
+            font-size: clamp(2rem, 3.5vw, 2.75rem);
             margin-bottom: 1.5rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
         }
 
         .about-text p {
             color: var(--text-secondary);
-            font-size: 1.1rem;
-            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            margin-bottom: 1.25rem;
             line-height: 1.8;
+        }
+
+        .about-text p strong {
+            color: var(--text-primary);
+            font-weight: 500;
         }
 
         .about-details {
@@ -387,18 +445,20 @@
         .about-detail {
             display: flex;
             flex-direction: column;
-            gap: 0.25rem;
+            gap: 0.35rem;
         }
 
         .about-detail-label {
-            color: var(--text-secondary);
-            font-size: 0.75rem;
+            color: var(--text-tertiary);
+            font-size: 0.7rem;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
+            letter-spacing: 0.12em;
+            font-weight: 600;
         }
 
         .about-detail-value {
             font-weight: 500;
+            font-size: 0.95rem;
         }
 
         /* Skills Section */
@@ -428,11 +488,13 @@
             background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
             transform: scaleX(0);
             transition: transform 0.4s ease;
+            transform-origin: left;
         }
 
         .skill-card:hover {
             border-color: rgba(59, 130, 246, 0.3);
             transform: translateY(-4px);
+            background: var(--bg-elevated);
         }
 
         .skill-card:hover::before {
@@ -440,21 +502,29 @@
         }
 
         .skill-icon {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
-            border-radius: 12px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
+            border: 1px solid rgba(59, 130, 246, 0.15);
+            border-radius: 10px;
             margin-bottom: 1.25rem;
-            font-size: 1.5rem;
+            color: var(--accent);
+        }
+
+        .skill-icon svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 1.75;
         }
 
         .skill-card h3 {
             font-size: 1.125rem;
             font-weight: 600;
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
+            letter-spacing: -0.01em;
         }
 
         .skill-card p {
@@ -472,10 +542,12 @@
 
         .skill-tag {
             padding: 0.35rem 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
             border-radius: 100px;
             font-size: 0.75rem;
             color: var(--text-secondary);
+            font-weight: 500;
         }
 
         /* Projects Section */
@@ -514,18 +586,35 @@
             direction: rtl;
         }
 
-        .project-card:nth-child(even)>* {
+        .project-card:nth-child(even) > * {
             direction: ltr;
         }
 
         .project-image {
             position: relative;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            background:
+                radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.18), transparent 60%),
+                radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.15), transparent 60%),
+                #0d0d0d;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 2rem;
-            min-height: 350px;
+            padding: 2.5rem 2rem;
+            min-height: 360px;
+            overflow: hidden;
+        }
+
+        .project-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+            background-size: 32px 32px;
+            pointer-events: none;
+            mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
         }
 
         .project-mockup {
@@ -533,6 +622,8 @@
             gap: 1rem;
             transform: perspective(1000px) rotateY(-5deg);
             transition: transform 0.4s ease;
+            position: relative;
+            z-index: 1;
         }
 
         .project-card:hover .project-mockup {
@@ -563,15 +654,210 @@
             background: #1a1a1a;
         }
 
-        .phone-screen {
+        /* Browser mockup for web projects */
+        .browser-frame {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, var(--gradient-start), var(--gradient-end));
-            border-radius: 18px;
+            max-width: 440px;
+            background: #1a1a1a;
+            border-radius: 12px;
+            border: 1px solid var(--border-strong);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            position: relative;
+            z-index: 1;
+            transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
+            transition: transform 0.4s ease;
+        }
+
+        .project-card:hover .browser-frame {
+            transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
+        }
+
+        .browser-bar {
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 2rem;
+            gap: 0.5rem;
+            padding: 0.75rem 1rem;
+            background: #222;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .browser-dots {
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-dots span {
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+        }
+
+        .browser-dots span:nth-child(1) { background: #ff5f57; }
+        .browser-dots span:nth-child(2) { background: #febc2e; }
+        .browser-dots span:nth-child(3) { background: #28c840; }
+
+        .browser-url {
+            flex: 1;
+            background: #2d2d2d;
+            border-radius: 6px;
+            padding: 0.35rem 0.75rem;
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-left: 0.75rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .browser-body {
+            padding: 1.25rem;
+            min-height: 220px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08)), #181818;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .browser-row {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .browser-block {
+            height: 14px;
+            background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+            border-radius: 4px;
+            flex: 1;
+        }
+
+        .browser-block.tall { height: 70px; }
+        .browser-block.tile { height: 60px; }
+        .browser-block.short { max-width: 60%; }
+        .browser-block.accent {
+            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+            opacity: 0.7;
+            max-width: 35%;
+            height: 20px;
+        }
+
+        /* Multi-platform stack visual */
+        .platform-stack {
+            position: relative;
+            width: 100%;
+            max-width: 420px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0;
+            z-index: 1;
+        }
+
+        .stack-browser {
+            width: 100%;
+            background: #1a1a1a;
+            border-radius: 10px;
+            border: 1px solid var(--border-strong);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .stack-browser-mini {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.75rem;
+            background: #222;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .stack-browser-mini span {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .stack-browser-body {
+            padding: 0.85rem;
+            background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08)), #181818;
+            display: flex;
+            gap: 0.4rem;
+            min-height: 120px;
+            flex-direction: column;
+        }
+
+        .stack-browser-row {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .stack-browser-row > div {
+            flex: 1;
+            height: 32px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border-radius: 4px;
+        }
+
+        .stack-browser-row > div.accent-tile {
+            background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(139,92,246,0.3));
+        }
+
+        .stack-phones {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stack-phone {
+            width: 90px;
+            height: 175px;
+            background: var(--bg-primary);
+            border-radius: 16px;
+            border: 2px solid #333;
+            padding: 6px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .stack-phone-screen {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(59,130,246,0.4), rgba(139,92,246,0.4));
+            border-radius: 11px;
+            display: flex;
+            flex-direction: column;
+            padding: 0.5rem;
+            gap: 0.35rem;
+        }
+
+        .stack-phone-screen > div {
+            background: rgba(255,255,255,0.15);
+            border-radius: 3px;
+            height: 18px;
+        }
+
+        .stack-phone-screen > div:first-child {
+            height: 35px;
+        }
+
+        .platform-label {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.3rem 0.7rem;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            color: var(--text-secondary);
+            letter-spacing: 0.05em;
+            z-index: 3;
         }
 
         .project-content {
@@ -579,6 +865,14 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
+        }
+
+        .project-meta-row {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+            flex-wrap: wrap;
         }
 
         .project-badge {
@@ -589,33 +883,111 @@
             background: rgba(59, 130, 246, 0.1);
             color: var(--accent);
             border-radius: 100px;
-            font-size: 0.75rem;
+            font-size: 0.72rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.05em;
             width: fit-content;
-            margin-bottom: 1.25rem;
+        }
+
+        .project-badge.published {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
         }
 
         .project-badge.published::before {
             content: '';
             width: 6px;
             height: 6px;
-            background: #22c55e;
+            background: var(--success);
             border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+        }
+
+        .project-badge.live {
+            background: rgba(34, 197, 94, 0.1);
+            color: #4ade80;
+        }
+
+        .project-badge.live::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--success);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--success);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .project-badge.flagship {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+            color: var(--accent);
+            border: 1px solid rgba(59, 130, 246, 0.25);
+        }
+
+        .project-badge.independent {
+            background: rgba(139, 92, 246, 0.1);
+            color: #a78bfa;
+        }
+
+        .project-role {
+            font-family: var(--mono);
+            font-size: 0.7rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
         }
 
         .project-title {
             font-family: var(--serif);
-            font-size: 1.75rem;
+            font-size: 1.85rem;
+            margin-bottom: 0.4rem;
+            line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+
+        .project-subtitle {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
             margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .project-description {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            line-height: 1.7;
+            line-height: 1.75;
             margin-bottom: 1.5rem;
+        }
+
+        .project-impact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+        }
+
+        .impact-stat {
+            display: flex;
+            flex-direction: column;
+            gap: 0.15rem;
+        }
+
+        .impact-value {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-primary);
+        }
+
+        .impact-label {
+            font-size: 0.72rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
         .project-tech {
@@ -627,16 +999,19 @@
 
         .project-tech span {
             padding: 0.35rem 0.75rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border);
             border-radius: 6px;
-            font-size: 0.8rem;
+            font-size: 0.78rem;
             color: var(--text-secondary);
+            font-weight: 500;
         }
 
         .project-links {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             margin-top: auto;
+            flex-wrap: wrap;
         }
 
         .project-link {
@@ -645,21 +1020,23 @@
             gap: 0.5rem;
             color: var(--text-primary);
             text-decoration: none;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
             font-weight: 500;
-            padding: 0.75rem 1.25rem;
+            padding: 0.7rem 1.1rem;
             background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border);
             border-radius: 8px;
             transition: all 0.3s ease;
         }
 
         .project-link:hover {
             background: rgba(255, 255, 255, 0.1);
+            border-color: var(--border-strong);
         }
 
         .project-link svg {
-            width: 18px;
-            height: 18px;
+            width: 16px;
+            height: 16px;
         }
 
         /* Experience Section */
@@ -680,14 +1057,18 @@
 
         .experience-item {
             position: relative;
-            padding-bottom: 3rem;
+            padding-bottom: 3.5rem;
+        }
+
+        .experience-item:last-child {
+            padding-bottom: 0;
         }
 
         .experience-item::before {
             content: '';
             position: absolute;
             left: -3rem;
-            top: 0.5rem;
+            top: 0.6rem;
             width: 10px;
             height: 10px;
             background: var(--accent);
@@ -696,29 +1077,147 @@
         }
 
         .experience-date {
+            font-family: var(--mono);
             color: var(--accent);
-            font-size: 0.8rem;
-            font-weight: 600;
+            font-size: 0.78rem;
+            font-weight: 500;
             letter-spacing: 0.05em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            text-transform: uppercase;
         }
 
         .experience-role {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             font-weight: 600;
-            margin-bottom: 0.25rem;
+            margin-bottom: 0.35rem;
+            letter-spacing: -0.01em;
         }
 
         .experience-company {
             color: var(--text-secondary);
             font-size: 0.95rem;
             margin-bottom: 1rem;
+            font-weight: 500;
         }
 
         .experience-description {
             color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.75;
+            margin-bottom: 1rem;
+        }
+
+        .experience-highlights {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .experience-highlights li {
+            color: var(--text-secondary);
             font-size: 0.9rem;
-            line-height: 1.7;
+            line-height: 1.65;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .experience-highlights li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.6rem;
+            width: 6px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        /* Publications Section */
+        #publications {
+            background: var(--bg-secondary);
+            max-width: none;
+            padding: 7rem 3rem;
+        }
+
+        .publications-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .publication-card {
+            display: block;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 1rem;
+            padding: 1.75rem;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .publication-card:hover {
+            border-color: rgba(59, 130, 246, 0.3);
+            transform: translateY(-3px);
+            background: var(--bg-elevated);
+        }
+
+        .publication-meta {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1rem;
+            font-family: var(--mono);
+            font-size: 0.72rem;
+            color: var(--text-tertiary);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+
+        .publication-meta::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        .publication-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.6rem;
+            line-height: 1.35;
+            letter-spacing: -0.01em;
+        }
+
+        .publication-summary {
+            color: var(--text-secondary);
+            font-size: 0.88rem;
+            line-height: 1.6;
+        }
+
+        .publication-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            margin-top: 1.25rem;
+            color: var(--accent);
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .publication-arrow svg {
+            transition: transform 0.3s ease;
+        }
+
+        .publication-card:hover .publication-arrow svg {
+            transform: translateX(4px);
         }
 
         /* Contact Section */
@@ -730,14 +1229,17 @@
 
         #contact .section-header {
             margin-bottom: 2rem;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-cta {
             font-family: var(--serif);
             font-size: clamp(2.5rem, 6vw, 4.5rem);
             font-weight: 400;
-            line-height: 1.2;
+            line-height: 1.15;
             margin-bottom: 2rem;
+            letter-spacing: -0.02em;
         }
 
         .contact-cta .highlight {
@@ -749,7 +1251,7 @@
         }
 
         .contact-email {
-            font-size: 1.25rem;
+            font-size: 1.2rem;
             color: var(--text-secondary);
             margin-bottom: 3rem;
         }
@@ -768,7 +1270,7 @@
         .social-links {
             display: flex;
             justify-content: center;
-            gap: 1.5rem;
+            gap: 1.25rem;
         }
 
         .social-link {
@@ -803,8 +1305,8 @@
         }
 
         footer p {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
         }
 
         /* Animations */
@@ -893,7 +1395,12 @@
             }
 
             .project-image {
-                min-height: 280px;
+                min-height: 300px;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2.5rem;
             }
         }
 
@@ -947,13 +1454,23 @@
             section,
             #about,
             #projects,
+            #publications,
             #contact {
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
 
+            .hero-status {
+                margin-left: 0;
+                margin-top: 0.5rem;
+            }
+
+            .hero-eyebrow {
+                flex-wrap: wrap;
+            }
+
             .hero-stats {
-                flex-direction: column;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 2rem;
             }
 
@@ -980,6 +1497,14 @@
             .experience-item::before {
                 left: -2rem;
             }
+
+            .project-content {
+                padding: 2rem;
+            }
+
+            .platform-stack {
+                transform: scale(0.85);
+            }
         }
     </style>
 </head>
@@ -993,8 +1518,8 @@
         <a href="#top" class="logo">AS.</a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about">About</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Expertise</a></li>
+            <li><a href="#projects">Work</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -1009,14 +1534,19 @@
     <section class="hero">
         <div class="hero-bg"></div>
         <div class="hero-content">
-            <div class="hero-eyebrow">Flutter Developer</div>
+            <div class="hero-eyebrow">
+                Senior Software Engineer &middot; Team Lead
+                <span class="hero-status">Open to opportunities</span>
+            </div>
             <h1 class="hero-title">
-                Crafting <span class="highlight">exceptional</span><br>
-                mobile experiences
+                Engineering <span class="highlight">scalable</span> products,<br>
+                leading the teams<br>
+                that ship them.
             </h1>
             <p class="hero-subtitle">
-                I'm Ahmed Sherif, a Flutter developer with 3+ years of experience building
-                high-quality applications that users love. Based in Cairo, Egypt.
+                I'm Ahmed Sherif, a Senior Flutter Developer and Software Team Lead based in Cairo.
+                I lead a cross-functional team of six, own infrastructure for 26+ projects, and ship
+                production software across mobile and web.
             </p>
             <div class="hero-cta">
                 <a href="#projects" class="btn btn-primary">
@@ -1029,20 +1559,20 @@
             </div>
             <div class="hero-stats">
                 <div class="stat">
-                    <div class="stat-value">3+</div>
-                    <div class="stat-label">Years Experience</div>
+                    <div class="stat-value">4+</div>
+                    <div class="stat-label">Years Engineering</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">5</div>
-                    <div class="stat-label">Apps Developed</div>
+                    <div class="stat-value">26+</div>
+                    <div class="stat-label">Projects Shipped</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">15K+</div>
-                    <div class="stat-label">Users Reached</div>
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Engineers Led</div>
                 </div>
                 <div class="stat">
-                    <div class="stat-value">40%</div>
-                    <div class="stat-label">Load Time Reduced</div>
+                    <div class="stat-value">8</div>
+                    <div class="stat-label">Apps in Production</div>
                 </div>
             </div>
         </div>
@@ -1056,22 +1586,32 @@
             </div>
             <div class="about-text reveal">
                 <div class="section-eyebrow">About Me</div>
-                <h2>Building digital products with passion & precision</h2>
+                <h2>Building production software, owning delivery end-to-end</h2>
                 <p>
-                    I'm an innovative Flutter Developer passionate about programming and building
-                    high-quality applications. With expertise spanning educational, medical, and
-                    e-commerce domains, I've developed applications that serve thousands of users daily.
+                    Senior Flutter Developer and Software Team Lead with <strong>4+ years</strong> designing,
+                    delivering, and scaling production software across mobile and web. Currently leading a
+                    cross-functional team of six at <strong>Orange Bay</strong>, owning technical direction,
+                    delivery, and stakeholder communication for a multi-platform product ecosystem.
                 </p>
                 <p>
-                    My approach combines Clean Architecture principles with modern state management
-                    solutions to deliver seamless user experiences. I take pride in optimizing app
-                    performance and integrating advanced features like payment gateways, real-time
-                    notifications, and sophisticated UI/UX interactions.
+                    I've established the foundational infrastructure for <strong>26+ projects</strong> &mdash;
+                    from domain configuration and Cloudflare setup to end-to-end delivery planning. Three apps
+                    published on Google Play and the App Store with adoption across <strong>tens of thousands of
+                    users</strong>, backed by deep expertise in Clean Architecture, BLoC, and performance optimization.
+                </p>
+                <p>
+                    Backend-aware engineer comfortable across <strong>Supabase, Django, and Next.js</strong>, with
+                    a record of translating business requirements into scalable, maintainable systems. Also an
+                    independent builder of <strong>Aura</strong>, a full-stack e-commerce ecosystem.
                 </p>
                 <div class="about-details">
                     <div class="about-detail">
                         <span class="about-detail-label">Location</span>
-                        <span class="about-detail-value">Cairo, Egypt</span>
+                        <span class="about-detail-value">Cairo, Egypt &middot; Remote</span>
+                    </div>
+                    <div class="about-detail">
+                        <span class="about-detail-label">Current Role</span>
+                        <span class="about-detail-value">Senior Engineer &amp; Team Lead</span>
                     </div>
                     <div class="about-detail">
                         <span class="about-detail-label">Education</span>
@@ -1079,11 +1619,7 @@
                     </div>
                     <div class="about-detail">
                         <span class="about-detail-label">Languages</span>
-                        <span class="about-detail-value">English, Arabic, Greek</span>
-                    </div>
-                    <div class="about-detail">
-                        <span class="about-detail-label">Specialty</span>
-                        <span class="about-detail-value">Cross-Platform Development</span>
+                        <span class="about-detail-value">English &middot; Arabic &middot; Greek</span>
                     </div>
                 </div>
             </div>
@@ -1094,14 +1630,22 @@
     <section id="skills">
         <div class="section-header reveal">
             <div class="section-eyebrow">Expertise</div>
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title">A senior engineer's toolkit</h2>
+            <p class="section-lede">
+                Depth in Flutter and architecture, breadth across full-stack, infrastructure, and team leadership &mdash;
+                the layers it takes to actually ship and run software at scale.
+            </p>
         </div>
         <div class="skills-grid">
             <div class="skill-card reveal">
-                <div class="skill-icon">📱</div>
-                <h3>Mobile Development</h3>
-                <p>Building beautiful, performant cross-platform applications with Flutter and Dart for iOS and Android.
-                </p>
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="5" y="2" width="14" height="20" rx="2.5" />
+                        <line x1="12" y1="18" x2="12.01" y2="18" />
+                    </svg>
+                </div>
+                <h3>Senior Mobile Engineering</h3>
+                <p>Architecting and shipping cross-platform Flutter apps from concept through App Store and Play Store release.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Flutter</span>
                     <span class="skill-tag">Dart</span>
@@ -1111,56 +1655,122 @@
                 </div>
             </div>
             <div class="skill-card reveal">
-                <div class="skill-icon">🏗️</div>
-                <h3>Architecture & Patterns</h3>
-                <p>Implementing scalable, maintainable codebases using industry-standard architectural patterns.</p>
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                        <polyline points="2 17 12 22 22 17" />
+                        <polyline points="2 12 12 17 22 12" />
+                    </svg>
+                </div>
+                <h3>Architecture &amp; Patterns</h3>
+                <p>Designing scalable codebases with Clean Architecture, SOLID, and proven design patterns for long-term maintainability.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Clean Architecture</span>
-                    <span class="skill-tag">MVVM</span>
+                    <span class="skill-tag">SOLID</span>
                     <span class="skill-tag">BLoC</span>
                     <span class="skill-tag">Repository</span>
+                    <span class="skill-tag">DI</span>
                 </div>
             </div>
             <div class="skill-card reveal">
-                <div class="skill-icon">🔄</div>
-                <h3>State Management</h3>
-                <p>Efficient state management solutions for complex applications with predictable data flow.</p>
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <ellipse cx="12" cy="5" rx="9" ry="3" />
+                        <path d="M3 5v14a9 3 0 0 0 18 0V5" />
+                        <path d="M3 12a9 3 0 0 0 18 0" />
+                    </svg>
+                </div>
+                <h3>Full-Stack &amp; Backend</h3>
+                <p>Backend-aware engineering across Supabase, Django, and Next.js &mdash; from data modeling to RESTful APIs and real-time sync.</p>
                 <div class="skill-tags">
-                    <span class="skill-tag">BLoC</span>
-                    <span class="skill-tag">Provider</span>
-                    <span class="skill-tag">Riverpod</span>
-                    <span class="skill-tag">Redux</span>
+                    <span class="skill-tag">Supabase</span>
+                    <span class="skill-tag">Next.js</span>
+                    <span class="skill-tag">React</span>
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">REST</span>
                 </div>
             </div>
             <div class="skill-card reveal">
-                <div class="skill-icon">🔌</div>
-                <h3>Backend Integration</h3>
-                <p>Seamless integration with various backend services, APIs, and real-time databases.</p>
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17.5 19a4.5 4.5 0 1 0 0-9 5.5 5.5 0 0 0-10.8-1.5A4 4 0 0 0 6.5 19z" />
+                    </svg>
+                </div>
+                <h3>Infrastructure &amp; DevOps</h3>
+                <p>Owning infrastructure end-to-end: domain acquisition, Cloudflare security policies, deployments, and release pipelines.</p>
                 <div class="skill-tags">
-                    <span class="skill-tag">REST APIs</span>
-                    <span class="skill-tag">GraphQL</span>
+                    <span class="skill-tag">Cloudflare</span>
+                    <span class="skill-tag">Vercel</span>
+                    <span class="skill-tag">GitHub Actions</span>
+                    <span class="skill-tag">Codemagic</span>
                     <span class="skill-tag">Firebase</span>
-                    <span class="skill-tag">WebSocket</span>
                 </div>
             </div>
             <div class="skill-card reveal">
-                <div class="skill-icon">💳</div>
-                <h3>Payment Integration</h3>
-                <p>Implementing secure payment solutions and subscription management systems.</p>
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                    </svg>
+                </div>
+                <h3>Team Leadership</h3>
+                <p>Leading six engineers and designers: sprint planning, code review, technical roadmapping, and mentorship for consistent delivery.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Sprint Planning</span>
+                    <span class="skill-tag">Code Review</span>
+                    <span class="skill-tag">Roadmapping</span>
+                    <span class="skill-tag">Mentorship</span>
+                    <span class="skill-tag">Stakeholder Comms</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2L9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5L12 2z" />
+                    </svg>
+                </div>
+                <h3>AI-Augmented Development</h3>
+                <p>Integrating Claude, Cursor, and Copilot across the team for accelerated scaffolding, architectural reasoning, and faster debugging.</p>
+                <div class="skill-tags">
+                    <span class="skill-tag">Claude</span>
+                    <span class="skill-tag">Cursor</span>
+                    <span class="skill-tag">Copilot</span>
+                    <span class="skill-tag">AI Product Integration</span>
+                </div>
+            </div>
+            <div class="skill-card reveal">
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="2" />
+                        <line x1="2" y1="10" x2="22" y2="10" />
+                    </svg>
+                </div>
+                <h3>Payments &amp; E-Commerce</h3>
+                <p>Integrating secure payment gateways with subscription management, recurring billing, and end-to-end storefront architecture.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Stripe</span>
                     <span class="skill-tag">PayPal</span>
                     <span class="skill-tag">Paymob</span>
                     <span class="skill-tag">Fawry</span>
+                    <span class="skill-tag">Subscriptions</span>
                 </div>
             </div>
             <div class="skill-card reveal">
-                <div class="skill-icon">🧪</div>
-                <h3>Testing & Quality</h3>
-                <p>Ensuring code reliability through comprehensive testing strategies and TDD practices.</p>
+                <div class="skill-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                        <polyline points="9 12 11 14 15 10" />
+                    </svg>
+                </div>
+                <h3>Testing &amp; Quality</h3>
+                <p>Building reliable systems through unit, widget, and integration testing with TDD discipline and disciplined code review.</p>
                 <div class="skill-tags">
                     <span class="skill-tag">Unit Testing</span>
-                    <span class="skill-tag">Widget Testing</span>
+                    <span class="skill-tag">Widget Tests</span>
+                    <span class="skill-tag">Integration</span>
                     <span class="skill-tag">TDD</span>
                     <span class="skill-tag">Mockito</span>
                 </div>
@@ -1172,13 +1782,223 @@
     <section id="projects">
         <div class="projects-container">
             <div class="section-header reveal">
-                <div class="section-eyebrow">Portfolio</div>
-                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-eyebrow">Selected Work</div>
+                <h2 class="section-title">Products I've shipped &amp; teams I've led</h2>
+                <p class="section-lede">
+                    A mix of multi-platform ecosystems led at Orange Bay, independent full-stack builds, and
+                    published mobile apps with thousands of active users.
+                </p>
             </div>
             <div class="projects-grid">
+
+                <!-- O-Marina (Flagship) -->
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <span class="platform-label">3 web &middot; 2 mobile</span>
+                        <div class="platform-stack">
+                            <div class="stack-browser">
+                                <div class="stack-browser-mini">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="stack-browser-body">
+                                    <div class="stack-browser-row">
+                                        <div class="accent-tile"></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="stack-browser-row">
+                                        <div></div>
+                                        <div class="accent-tile"></div>
+                                        <div></div>
+                                    </div>
+                                    <div class="stack-browser-row">
+                                        <div></div>
+                                        <div></div>
+                                        <div class="accent-tile"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="stack-phones">
+                                <div class="stack-phone">
+                                    <div class="stack-phone-screen">
+                                        <div></div><div></div><div></div><div></div>
+                                    </div>
+                                </div>
+                                <div class="stack-phone">
+                                    <div class="stack-phone-screen">
+                                        <div></div><div></div><div></div><div></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta-row">
+                            <span class="project-badge flagship">Flagship &middot; Active</span>
+                            <span class="project-role">Tech Lead &middot; Architecture &middot; Delivery</span>
+                        </div>
+                        <h3 class="project-title">O-Marina Ecosystem</h3>
+                        <p class="project-subtitle">Multi-platform hospitality platform &middot; Orange Bay</p>
+                        <p class="project-description">
+                            A large-scale platform spanning three web applications (admin dashboard, owner platform,
+                            customer platform) and two mobile applications, with additional systems in active development.
+                            I own architecture, cross-platform consistency, and delivery coordination across all five surfaces.
+                        </p>
+                        <div class="project-impact">
+                            <div class="impact-stat">
+                                <span class="impact-value">5</span>
+                                <span class="impact-label">Surfaces</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">6</span>
+                                <span class="impact-label">Engineers Led</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">26+</span>
+                                <span class="impact-label">Projects</span>
+                            </div>
+                        </div>
+                        <div class="project-tech">
+                            <span>Flutter</span>
+                            <span>Next.js</span>
+                            <span>Supabase</span>
+                            <span>Clean Architecture</span>
+                            <span>BLoC</span>
+                            <span>Cloudflare</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aura (Independent Full-Stack) -->
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <span class="platform-label">Live storefront</span>
+                        <div class="browser-frame">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="browser-url">aura-frontend-ruddy-alpha.vercel.app</div>
+                            </div>
+                            <div class="browser-body">
+                                <div class="browser-row">
+                                    <div class="browser-block accent"></div>
+                                </div>
+                                <div class="browser-row">
+                                    <div class="browser-block tall"></div>
+                                    <div class="browser-block tall"></div>
+                                    <div class="browser-block tall"></div>
+                                </div>
+                                <div class="browser-row">
+                                    <div class="browser-block short"></div>
+                                </div>
+                                <div class="browser-row">
+                                    <div class="browser-block tile"></div>
+                                    <div class="browser-block tile"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta-row">
+                            <span class="project-badge independent">Independent Build</span>
+                            <span class="project-role">Solo &middot; Full-Stack &middot; Live</span>
+                        </div>
+                        <h3 class="project-title">Aura</h3>
+                        <p class="project-subtitle">Full-stack e-commerce ecosystem &middot; built independently</p>
+                        <p class="project-description">
+                            A self-initiated, end-to-end e-commerce product designed as a complete ecosystem
+                            rather than a single application. Live storefront and admin dashboard built solo &mdash;
+                            architecture, infrastructure, frontend, backend, and deployment. Mobile companion and
+                            AI recommendations engine in active development.
+                        </p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>Supabase</span>
+                            <span>PostgreSQL</span>
+                            <span>Vercel</span>
+                            <span>Stripe</span>
+                            <span>AI Recommendations</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://aura-frontend-ruddy-alpha.vercel.app" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                                Visit Live Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Orange Bay Hurghada -->
+                <div class="project-card reveal">
+                    <div class="project-image">
+                        <span class="platform-label">Web platform</span>
+                        <div class="browser-frame">
+                            <div class="browser-bar">
+                                <div class="browser-dots">
+                                    <span></span><span></span><span></span>
+                                </div>
+                                <div class="browser-url">orangebayhurghada.com</div>
+                            </div>
+                            <div class="browser-body">
+                                <div class="browser-row">
+                                    <div class="browser-block accent"></div>
+                                    <div class="browser-block short"></div>
+                                </div>
+                                <div class="browser-row">
+                                    <div class="browser-block tall"></div>
+                                </div>
+                                <div class="browser-row">
+                                    <div class="browser-block tile"></div>
+                                    <div class="browser-block tile"></div>
+                                    <div class="browser-block tile"></div>
+                                </div>
+                                <div class="browser-row">
+                                    <div class="browser-block short"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-meta-row">
+                            <span class="project-badge live">Live</span>
+                            <span class="project-role">Delivery Lead &middot; Stakeholder Mgmt</span>
+                        </div>
+                        <h3 class="project-title">orangebayhurghada.com</h3>
+                        <p class="project-subtitle">Hospitality web platform &middot; Orange Bay</p>
+                        <p class="project-description">
+                            Public-facing hospitality platform &mdash; I directed delivery, coordinating between
+                            stakeholders, designers, and developers to translate business goals into shipped features.
+                            Integrated into the wider Orange Bay product ecosystem with focus on scalability, SEO,
+                            and performance.
+                        </p>
+                        <div class="project-tech">
+                            <span>Web Platform</span>
+                            <span>SEO</span>
+                            <span>Performance</span>
+                            <span>Cloudflare</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://orangebayhurghada.com" target="_blank" rel="noopener" class="project-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                                    <polyline points="15 3 21 3 21 9" />
+                                    <line x1="10" y1="14" x2="21" y2="3" />
+                                </svg>
+                                Visit Site
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Tasesse App -->
                 <div class="project-card reveal">
                     <div class="project-image">
+                        <span class="platform-label">iOS &middot; Android</span>
                         <div class="project-mockup">
                             <div class="phone-frame">
                                 <img src="images/tassese1.webp" alt="Tasesse app screenshot - course list">
@@ -1189,13 +2009,32 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <span class="project-badge published">Published on App Stores</span>
-                        <h3 class="project-title">Tasesse Educational App</h3>
+                        <div class="project-meta-row">
+                            <span class="project-badge published">Published</span>
+                            <span class="project-role">Architecture &middot; Delivery</span>
+                        </div>
+                        <h3 class="project-title">Tasesse</h3>
+                        <p class="project-subtitle">Cross-platform educational app &middot; 10K+ users</p>
                         <p class="project-description">
-                            Cross-platform educational application supporting multi-user roles (students,
-                            parents, institutions) serving 10,000+ active users. Features scalable course
-                            management, interactive quizzes, and real-time analytics tracking 50+ metrics.
+                            Multi-role educational platform supporting students, parents, and institutions.
+                            Scalable course management with interactive quizzes, collaborative resource sharing,
+                            and real-time analytics tracking 50+ performance metrics. Integrated Stripe and Paymob
+                            for subscription management.
                         </p>
+                        <div class="project-impact">
+                            <div class="impact-stat">
+                                <span class="impact-value">10K+</span>
+                                <span class="impact-label">Active Users</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">50+</span>
+                                <span class="impact-label">Metrics Tracked</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">3</span>
+                                <span class="impact-label">User Roles</span>
+                            </div>
+                        </div>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>BLoC</span>
@@ -1205,7 +2044,7 @@
                         </div>
                         <div class="project-links">
                             <a href="https://play.google.com/store/apps/details?id=com.edu_tasses.tasesse_app"
-                                target="_blank" class="project-link">
+                                target="_blank" rel="noopener" class="project-link">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path
                                         d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
@@ -1213,7 +2052,7 @@
                                 Play Store
                             </a>
                             <a href="https://apps.apple.com/eg/app/taseese-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3/id6477544252"
-                                target="_blank" class="project-link">
+                                target="_blank" rel="noopener" class="project-link">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path
                                         d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
@@ -1227,6 +2066,7 @@
                 <!-- Mideo App -->
                 <div class="project-card reveal">
                     <div class="project-image">
+                        <span class="platform-label">iOS &middot; Android</span>
                         <div class="project-mockup">
                             <div class="phone-frame">
                                 <img src="images/mideo1.webp" alt="Mideo app screenshot - medical learning">
@@ -1237,21 +2077,40 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <span class="project-badge published">Published on App Stores</span>
-                        <h3 class="project-title">Mideo Medical Learning</h3>
+                        <div class="project-meta-row">
+                            <span class="project-badge published">Published</span>
+                            <span class="project-role">Architecture &middot; Real-time</span>
+                        </div>
+                        <h3 class="project-title">Mideo</h3>
+                        <p class="project-subtitle">Medical learning &amp; healthcare app &middot; 5K+ professionals</p>
                         <p class="project-description">
-                            Full-featured medical learning platform combining education, appointment management,
-                            and healthcare services for 5,000+ professionals. Real-time notifications,
-                            appointment booking, and integrated payment processing handling 200+ daily transactions.
+                            Full-featured medical platform combining learning, appointment management, and
+                            healthcare services. Real-time notifications, appointment booking, and integrated
+                            payment processing handling 200+ daily transactions. Data-driven architecture
+                            enabling personalized learning insights.
                         </p>
+                        <div class="project-impact">
+                            <div class="impact-stat">
+                                <span class="impact-value">5K+</span>
+                                <span class="impact-label">Professionals</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">200+</span>
+                                <span class="impact-label">Daily Tx</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">Real-time</span>
+                                <span class="impact-label">Notifications</span>
+                            </div>
+                        </div>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>Clean Architecture</span>
                             <span>Firebase</span>
-                            <span>Push Notifications</span>
+                            <span>FCM</span>
                         </div>
                         <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.medkingApp.mideo" target="_blank"
+                            <a href="https://play.google.com/store/apps/details?id=com.medkingApp.mideo" target="_blank" rel="noopener"
                                 class="project-link">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -1259,7 +2118,7 @@
                                 </svg>
                                 Play Store
                             </a>
-                            <a href="https://apps.apple.com/app/mideo-app/id6749076532" target="_blank"
+                            <a href="https://apps.apple.com/app/mideo-app/id6749076532" target="_blank" rel="noopener"
                                 class="project-link">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -1274,6 +2133,7 @@
                 <!-- MedKing App -->
                 <div class="project-card reveal">
                     <div class="project-image">
+                        <span class="platform-label">iOS &middot; Android</span>
                         <div class="project-mockup">
                             <div class="phone-frame">
                                 <img src="images/medking1.webp" alt="MedKing app screenshot - courses">
@@ -1284,29 +2144,48 @@
                         </div>
                     </div>
                     <div class="project-content">
-                        <span class="project-badge published">Published on App Stores</span>
-                        <h3 class="project-title">MedKing Education Platform</h3>
+                        <div class="project-meta-row">
+                            <span class="project-badge published">Published</span>
+                            <span class="project-role">Modular Architecture</span>
+                        </div>
+                        <h3 class="project-title">MedKing</h3>
+                        <p class="project-subtitle">Medical education platform &middot; 500+ courses</p>
                         <p class="project-description">
-                            Comprehensive medical education platform delivering 500+ expert-led courses with
-                            video lectures and interactive assessments. Features discussion forums, structured
-                            learning paths, and real-time content updates with modular architecture.
+                            Comprehensive medical education platform delivering expert-led courses with video
+                            lectures and interactive assessments. Scalable learning ecosystem with discussion
+                            forums, structured learning paths, and real-time content updates &mdash; built on a
+                            modular architecture for performance across medical specialties.
                         </p>
+                        <div class="project-impact">
+                            <div class="impact-stat">
+                                <span class="impact-value">500+</span>
+                                <span class="impact-label">Courses</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">Modular</span>
+                                <span class="impact-label">Architecture</span>
+                            </div>
+                            <div class="impact-stat">
+                                <span class="impact-value">Real-time</span>
+                                <span class="impact-label">Updates</span>
+                            </div>
+                        </div>
                         <div class="project-tech">
                             <span>Flutter</span>
                             <span>Modular Architecture</span>
                             <span>Video Streaming</span>
-                            <span>Real-time Updates</span>
+                            <span>Real-time Sync</span>
                         </div>
                         <div class="project-links">
                             <a href="https://play.google.com/store/apps/details?id=com.MedKingAppLLC.MedKing"
-                                target="_blank" class="project-link">
+                                target="_blank" rel="noopener" class="project-link">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path
                                         d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
                                 </svg>
                                 Play Store
                             </a>
-                            <a href="https://apps.apple.com/us/app/medking/id6664068510" target="_blank"
+                            <a href="https://apps.apple.com/us/app/medking/id6664068510" target="_blank" rel="noopener"
                                 class="project-link">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
                                     <path
@@ -1326,48 +2205,108 @@
     <section id="experience">
         <div class="section-header reveal">
             <div class="section-eyebrow">Career</div>
-            <h2 class="section-title">Work Experience</h2>
+            <h2 class="section-title">Where I've shipped</h2>
         </div>
         <div class="experience-timeline">
             <div class="experience-item reveal">
-                <div class="experience-date">Jun 2025 – Present</div>
-                <h3 class="experience-role">Flutter Developer & Project Coordinator</h3>
-                <p class="experience-company">Orange Bay Company</p>
+                <div class="experience-date">Jan 2026 &mdash; Present</div>
+                <h3 class="experience-role">Senior Flutter Developer &amp; Software Team Lead</h3>
+                <p class="experience-company">Orange Bay Company &middot; Remote</p>
                 <p class="experience-description">
-                    Leading the development and delivery of Flutter-based mobile applications, overseeing
-                    the full lifecycle from requirements gathering to deployment. Managing project planning,
-                    task prioritization, and cross-functional coordination to ensure timely, high-quality releases.
+                    Leading end-to-end software delivery for a multi-platform hospitality ecosystem. Direct
+                    responsibility for infrastructure, technical direction, delivery, and team performance
+                    across a growing portfolio of products.
                 </p>
+                <ul class="experience-highlights">
+                    <li>Established and manage foundational infrastructure for 26+ projects across the O-Marina ecosystem and beyond &mdash; domain acquisition, Cloudflare setup and security, and a repeatable delivery process.</li>
+                    <li>Lead a cross-functional team of six covering Flutter, web, design, and backend &mdash; sprint planning, code review, and QA across all delivery streams.</li>
+                    <li>Own architecture across O-Marina (three web apps + two mobile apps) ensuring cross-platform consistency, shared design language, and unified data contracts.</li>
+                    <li>Introduced AI-augmented development across the team using Claude (primary), Cursor, and Copilot &mdash; accelerating scaffolding, code review, and debugging without compromising quality.</li>
+                    <li>Defined branching, review, and release standards that measurably reduced regressions and accelerated cycle time.</li>
+                </ul>
             </div>
+
             <div class="experience-item reveal">
-                <div class="experience-date">Jun 2023 – Sep 2025</div>
+                <div class="experience-date">Jun 2023 &mdash; Sep 2025</div>
                 <h3 class="experience-role">Flutter Developer</h3>
-                <p class="experience-company">Sadeema Company (Remote)</p>
+                <p class="experience-company">Sadeema Company &middot; Remote</p>
                 <p class="experience-description">
-                    Architected and delivered multiple Flutter applications using Clean Architecture principles,
-                    achieving seamless API integration and localization across diverse markets. Optimized app
-                    performance, reducing load times by 40% through efficient state management and caching strategies.
+                    Delivered multiple production Flutter applications for clients across regional markets,
+                    owning feature delivery from architecture through release.
                 </p>
+                <ul class="experience-highlights">
+                    <li>Architected and shipped multiple Flutter apps using Clean Architecture and BLoC, with stable API integration and multi-language localization.</li>
+                    <li>Reduced app load times by approximately 40% through state management refactors, asset optimization, and disciplined caching.</li>
+                    <li>Established reusable architecture templates that accelerated onboarding of new features across client projects.</li>
+                </ul>
             </div>
+
             <div class="experience-item reveal">
-                <div class="experience-date">Dec 2022 – Jun 2023</div>
+                <div class="experience-date">Dec 2022 &mdash; Jun 2023</div>
                 <h3 class="experience-role">Flutter Development Instructor</h3>
-                <p class="experience-company">GDSC Cairo University</p>
+                <p class="experience-company">GDSC &mdash; Cairo University</p>
                 <p class="experience-description">
-                    Mentored 20+ junior Flutter developers through comprehensive training in BLoC pattern
-                    architecture, clean coding practices, and advanced UI animation techniques. Created and
-                    shared educational content on YouTube for public learning.
+                    Mentored 20+ junior developers in BLoC architecture, clean coding practices, and advanced
+                    UI implementation through structured workshops. Published recorded training sessions on
+                    YouTube as an open learning resource for the wider Flutter community.
                 </p>
             </div>
+
             <div class="experience-item reveal">
-                <div class="experience-date">Nov 2022 – Jan 2023</div>
-                <h3 class="experience-role">Flutter Developer Intern</h3>
-                <p class="experience-company">PURE SOFT</p>
+                <div class="experience-date">Nov 2022 &mdash; Jan 2023</div>
+                <h3 class="experience-role">Flutter Developer (Internship)</h3>
+                <p class="experience-company">Pure Soft &middot; Cairo, Egypt</p>
                 <p class="experience-description">
-                    Developed responsive cross-platform interfaces optimized for diverse device specifications
-                    and screen sizes. Implemented SQLite database integration with advanced navigation patterns,
-                    delivering high-performance applications.
+                    Built responsive cross-platform interfaces optimized for varied device specifications.
+                    Implemented SQLite-backed local persistence with advanced navigation patterns in
+                    production-grade prototypes.
                 </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Publications Section -->
+    <section id="publications">
+        <div class="publications-container">
+            <div class="section-header reveal">
+                <div class="section-eyebrow">Writing</div>
+                <h2 class="section-title">Publications</h2>
+                <p class="section-lede">
+                    Sharing practical patterns from production work &mdash; the kind of engineering writing
+                    I wish I'd had earlier in my career.
+                </p>
+            </div>
+            <div class="publications-grid">
+                <a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" class="publication-card reveal">
+                    <div class="publication-meta">Medium &middot; Flutter</div>
+                    <h3 class="publication-title">Easiest Way to Cache Data in Flutter: A Step-by-Step Guide</h3>
+                    <p class="publication-summary">
+                        A pragmatic walkthrough of building a clean, reliable caching layer in Flutter &mdash;
+                        moving past tutorial-grade snippets into something you'd actually ship.
+                    </p>
+                    <span class="publication-arrow">
+                        Read on Medium
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </span>
+                </a>
+                <a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" class="publication-card reveal">
+                    <div class="publication-meta">Medium &middot; Architecture</div>
+                    <h3 class="publication-title">Implementing Pagination using BLoC and Clean Architecture</h3>
+                    <p class="publication-summary">
+                        How to wire pagination through your BLoC, repository, and data source layers without
+                        leaking state &mdash; with the trade-offs that show up only at scale.
+                    </p>
+                    <span class="publication-arrow">
+                        Read on Medium
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                            <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                    </span>
+                </a>
             </div>
         </div>
     </section>
@@ -1378,32 +2317,33 @@
             <div class="section-eyebrow">Get in Touch</div>
         </div>
         <h2 class="contact-cta reveal">
-            Let's build something<br><span class="highlight">amazing together</span>
+            Let's build something<br><span class="highlight">that scales.</span>
         </h2>
         <p class="contact-email reveal">
-            Drop me a line at <a href="mailto:ahmedsherif4175@gmail.com">ahmedsherif4175@gmail.com</a>
+            Open to senior engineering &amp; tech lead roles. Reach me at
+            <a href="mailto:ahmedsherif4175@gmail.com">ahmedsherif4175@gmail.com</a>
         </p>
         <div class="social-links reveal">
-            <a href="https://github.com/AhmedSherif4" target="_blank" class="social-link" aria-label="GitHub">
+            <a href="https://github.com/AhmedSherif4" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
                 </svg>
             </a>
-            <a href="https://linkedin.com/in/ahmed-sherif-516a5a213" target="_blank" class="social-link"
+            <a href="https://linkedin.com/in/ahmed-sherif-516a5a213" target="_blank" rel="noopener" class="social-link"
                 aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
                 </svg>
             </a>
-            <a href="https://www.youtube.com/@ahmedsherif948" target="_blank" class="social-link" aria-label="YouTube">
+            <a href="https://www.youtube.com/@ahmedsherif948" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
                 </svg>
             </a>
-            <a href="https://medium.com/@ahmedsherif4175" target="_blank" class="social-link" aria-label="Medium">
+            <a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" class="social-link" aria-label="Medium">
                 <svg viewBox="0 0 24 24" fill="currentColor">
                     <path
                         d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" />
@@ -1414,7 +2354,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2026 Ahmed Sherif. All rights reserved.</p>
+        <p>&copy; 2026 Ahmed Sherif &middot; Senior Software Engineer &amp; Team Lead &middot; Cairo, Egypt</p>
     </footer>
 
     <script>
