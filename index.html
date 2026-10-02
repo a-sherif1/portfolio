@@ -1,2489 +1,574 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ahmed Sherif | Senior Software Engineer & Team Lead</title>
-    <meta name="description"
-        content="Senior Flutter Developer and Software Team Lead with 4+ years scaling production software across mobile and web. Leading a 6-person team at Orange Bay, owning infrastructure for 26+ projects.">
-    <meta name="keywords"
-        content="Senior Software Engineer, Senior Flutter Developer, Software Team Lead, Full-Stack Engineer, Flutter, Next.js, Supabase, Clean Architecture, BLoC, Cairo, Egypt">
-    <meta property="og:title" content="Ahmed Sherif | Senior Software Engineer & Team Lead">
-    <meta property="og:description"
-        content="Building scalable products across mobile and web. Leading the teams that ship them.">
-    <meta property="og:type" content="website">
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Roboto:wght@400;500;700&display=swap"
-        rel="stylesheet">
-
-    <style>
-        :root {
-            --bg-primary: #0a0a0a;
-            --bg-secondary: #111111;
-            --bg-card: #161616;
-            --bg-elevated: #1c1c1c;
-            --text-primary: #f5f5f5;
-            --text-secondary: #a0a0a0;
-            --text-tertiary: #6b6b6b;
-            --accent: #3b82f6;
-            --accent-warm: #8b5cf6;
-            --accent-glow: rgba(59, 130, 246, 0.3);
-            --gradient-start: #3b82f6;
-            --gradient-end: #8b5cf6;
-            --success: #22c55e;
-            --border: rgba(255, 255, 255, 0.08);
-            --border-strong: rgba(255, 255, 255, 0.14);
-            --serif: 'Cormorant Garamond', Georgia, serif;
-            --sans: 'Inter', system-ui, sans-serif;
-            --mono: 'JetBrains Mono', ui-monospace, monospace;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--sans);
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        /* Noise texture overlay */
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-            opacity: 0.03;
-            pointer-events: none;
-            z-index: 1000;
-        }
-
-        /* Custom cursor effect */
-        .cursor-glow {
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            padding: 1.5rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            background: linear-gradient(to bottom, var(--bg-primary), transparent);
-            backdrop-filter: blur(10px);
-        }
-
-        .logo {
-            font-family: var(--serif);
-            font-size: 1.5rem;
-            font-style: italic;
-            color: var(--text-primary);
-            text-decoration: none;
-            position: relative;
-            z-index: 1000;
-            cursor: pointer !important;
-            padding: 0.5rem 0;
-        }
-
-        .logo:hover {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.02em;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 8rem 3rem 4rem;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background:
-                radial-gradient(ellipse 80% 50% at 50% -20%, rgba(59, 130, 246, 0.15), transparent),
-                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(139, 92, 246, 0.1), transparent);
-            z-index: -1;
-        }
-
-        .hero-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            width: 100%;
-        }
-
-        .hero-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--accent);
-            font-size: 0.875rem;
-            font-weight: 500;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeSlideUp 0.8s ease forwards;
-        }
-
-        .hero-eyebrow::before {
-            content: '';
-            width: 40px;
-            height: 1px;
-            background: var(--accent);
-        }
-
-        .hero-status {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.35rem 0.85rem;
-            background: rgba(34, 197, 94, 0.08);
-            border: 1px solid rgba(34, 197, 94, 0.25);
-            border-radius: 100px;
-            font-family: var(--mono);
-            font-size: 0.75rem;
-            color: #4ade80;
-            margin-left: 1rem;
-        }
-
-        .hero-status::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: #22c55e;
-            border-radius: 50%;
-            box-shadow: 0 0 8px #22c55e;
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.5; }
-        }
-
-        .hero-title {
-            font-family: var(--serif);
-            font-size: clamp(3rem, 10vw, 7rem);
-            font-weight: 400;
-            line-height: 1.05;
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeSlideUp 0.8s ease 0.15s forwards;
-            letter-spacing: -0.02em;
-        }
-
-        .hero-title .highlight {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            font-style: italic;
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            color: var(--text-secondary);
-            max-width: 640px;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeSlideUp 0.8s ease 0.3s forwards;
-            line-height: 1.7;
-        }
-
-        .hero-cta {
-            display: flex;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeSlideUp 0.8s ease 0.45s forwards;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 1rem 2rem;
-            border-radius: 100px;
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            border: none;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            color: white;
-            box-shadow: 0 4px 20px var(--accent-glow);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 30px var(--accent-glow);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--text-primary);
-            border: 1px solid var(--border-strong);
-        }
-
-        .btn-secondary:hover {
-            background: var(--bg-card);
-            border-color: var(--text-secondary);
-        }
-
-        .hero-stats {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-top: 5rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--border);
-            opacity: 0;
-            animation: fadeSlideUp 0.8s ease 0.6s forwards;
-        }
-
-        .stat {
-            text-align: left;
-        }
-
-        .stat-value {
-            font-family: 'Roboto', Arial, sans-serif !important;
-            font-style: normal !important;
-            font-size: clamp(2.25rem, 4vw, 3rem);
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-        }
-
-        .stat-label {
-            color: var(--text-secondary);
-            font-size: 0.875rem;
-            margin-top: 0.5rem;
-            line-height: 1.4;
-        }
-
-        /* Section Styles */
-        section {
-            padding: 6rem 3rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            margin-bottom: 4rem;
-            max-width: 720px;
-        }
-
-        .section-eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: var(--accent);
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-        }
-
-        .section-eyebrow::before {
-            content: '';
-            width: 24px;
-            height: 1px;
-            background: var(--accent);
-        }
-
-        .section-title {
-            font-family: var(--serif);
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            font-weight: 400;
-            line-height: 1.15;
-            letter-spacing: -0.01em;
-        }
-
-        .section-lede {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-top: 1.25rem;
-            line-height: 1.7;
-        }
-
-        /* About Section */
-        #about {
-            background: var(--bg-secondary);
-            max-width: none;
-            padding: 8rem 3rem;
-        }
-
-        .about-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 6rem;
-            align-items: center;
-        }
-
-        .about-image-wrapper {
-            position: relative;
-        }
-
-        .about-image {
-            width: 100%;
-            aspect-ratio: 4/5;
-            object-fit: cover;
-            border-radius: 1rem;
-            filter: grayscale(20%);
-        }
-
-        .about-image-wrapper::after {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            right: -2rem;
-            bottom: -2rem;
-            border: 1px solid var(--accent);
-            border-radius: 1rem;
-            z-index: -1;
-        }
-
-        .about-text h2 {
-            font-family: var(--serif);
-            font-size: clamp(2rem, 3.5vw, 2.75rem);
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
-
-        .about-text p {
-            color: var(--text-secondary);
-            font-size: 1.05rem;
-            margin-bottom: 1.25rem;
-            line-height: 1.8;
-        }
-
-        .about-text p strong {
-            color: var(--text-primary);
-            font-weight: 500;
-        }
-
-        .about-details {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            margin-top: 2.5rem;
-            padding-top: 2.5rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .about-detail {
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .about-detail-label {
-            color: var(--text-tertiary);
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            font-weight: 600;
-        }
-
-        .about-detail-value {
-            font-weight: 500;
-            font-size: 0.95rem;
-        }
-
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 2rem;
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .skill-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-            transform-origin: left;
-        }
-
-        .skill-card:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-            background: var(--bg-elevated);
-        }
-
-        .skill-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .skill-icon {
-            width: 44px;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.12), rgba(139, 92, 246, 0.12));
-            border: 1px solid rgba(59, 130, 246, 0.15);
-            border-radius: 10px;
-            margin-bottom: 1.25rem;
-            color: var(--accent);
-        }
-
-        .skill-icon svg {
-            width: 22px;
-            height: 22px;
-            stroke-width: 1.75;
-        }
-
-        .skill-card h3 {
-            font-size: 1.125rem;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-            letter-spacing: -0.01em;
-        }
-
-        .skill-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.6;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.25rem;
-        }
-
-        .skill-tag {
-            padding: 0.35rem 0.75rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-size: 0.75rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        /* Projects Section */
-        #projects {
-            background: var(--bg-secondary);
-            max-width: none;
-            padding: 8rem 3rem;
-        }
-
-        .projects-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .projects-grid {
-            display: grid;
-            gap: 2rem;
-        }
-
-        .project-card {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 1.5rem;
-            overflow: hidden;
-            transition: all 0.4s ease;
-        }
-
-        .project-card:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-4px);
-        }
-
-        .project-card:nth-child(even) {
-            direction: rtl;
-        }
-
-        .project-card:nth-child(even) > * {
-            direction: ltr;
-        }
-
-        .project-image {
-            position: relative;
-            background:
-                radial-gradient(ellipse at top left, rgba(59, 130, 246, 0.18), transparent 60%),
-                radial-gradient(ellipse at bottom right, rgba(139, 92, 246, 0.15), transparent 60%),
-                #0d0d0d;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2.5rem 2rem;
-            min-height: 360px;
-            overflow: hidden;
-        }
-
-        .project-image::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
-            background-size: 32px 32px;
-            pointer-events: none;
-            mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-            -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
-        }
-
-        .project-mockup {
-            display: flex;
-            gap: 1rem;
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: transform 0.4s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card:hover .project-mockup {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .phone-frame {
-            width: 140px;
-            height: 280px;
-            background: var(--bg-primary);
-            border-radius: 24px;
-            border: 3px solid #333;
-            padding: 8px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
-        }
-
-        .phone-frame:nth-child(2) {
-            transform: translateY(20px);
-        }
-
-        .phone-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 18px;
-            display: block;
-            background: #1a1a1a;
-        }
-
-        /* Browser mockup for web projects */
-        .browser-frame {
-            width: 100%;
-            max-width: 440px;
-            background: #1a1a1a;
-            border-radius: 12px;
-            border: 1px solid var(--border-strong);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-            transform: perspective(1200px) rotateY(-4deg) rotateX(2deg);
-            transition: transform 0.4s ease;
-        }
-
-        .project-card:hover .browser-frame {
-            transform: perspective(1200px) rotateY(0deg) rotateX(0deg);
-        }
-
-        .browser-bar {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.75rem 1rem;
-            background: #222;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .browser-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .browser-dots span {
-            width: 11px;
-            height: 11px;
-            border-radius: 50%;
-        }
-
-        .browser-dots span:nth-child(1) { background: #ff5f57; }
-        .browser-dots span:nth-child(2) { background: #febc2e; }
-        .browser-dots span:nth-child(3) { background: #28c840; }
-
-        .browser-url {
-            flex: 1;
-            background: #2d2d2d;
-            border-radius: 6px;
-            padding: 0.35rem 0.75rem;
-            font-family: var(--mono);
-            font-size: 0.7rem;
-            color: var(--text-secondary);
-            margin-left: 0.75rem;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .browser-body {
-            padding: 1.25rem;
-            min-height: 220px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(139, 92, 246, 0.08)), #181818;
-            display: flex;
-            flex-direction: column;
-            gap: 0.75rem;
-        }
-
-        .browser-row {
-            display: flex;
-            gap: 0.5rem;
-        }
-
-        .browser-block {
-            height: 14px;
-            background: linear-gradient(90deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
-            border-radius: 4px;
-            flex: 1;
-        }
-
-        .browser-block.tall { height: 70px; }
-        .browser-block.tile { height: 60px; }
-        .browser-block.short { max-width: 60%; }
-        .browser-block.accent {
-            background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
-            opacity: 0.7;
-            max-width: 35%;
-            height: 20px;
-        }
-
-        /* Multi-platform stack visual */
-        .platform-stack {
-            position: relative;
-            width: 100%;
-            max-width: 420px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0;
-            z-index: 1;
-        }
-
-        .stack-browser {
-            width: 100%;
-            background: #1a1a1a;
-            border-radius: 10px;
-            border: 1px solid var(--border-strong);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            overflow: hidden;
-            position: relative;
-        }
-
-        .stack-browser-mini {
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            padding: 0.5rem 0.75rem;
-            background: #222;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .stack-browser-mini span {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.15);
-        }
-
-        .stack-browser-body {
-            padding: 0.85rem;
-            background: linear-gradient(135deg, rgba(59,130,246,0.08), rgba(139,92,246,0.08)), #181818;
-            display: flex;
-            gap: 0.4rem;
-            min-height: 120px;
-            flex-direction: column;
-        }
-
-        .stack-browser-row {
-            display: flex;
-            gap: 0.4rem;
-        }
-
-        .stack-browser-row > div {
-            flex: 1;
-            height: 32px;
-            background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-            border-radius: 4px;
-        }
-
-        .stack-browser-row > div.accent-tile {
-            background: linear-gradient(135deg, rgba(59,130,246,0.3), rgba(139,92,246,0.3));
-        }
-
-        .stack-phones {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: -20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        .stack-phone {
-            width: 90px;
-            height: 175px;
-            background: var(--bg-primary);
-            border-radius: 16px;
-            border: 2px solid #333;
-            padding: 6px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .stack-phone-screen {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(180deg, rgba(59,130,246,0.4), rgba(139,92,246,0.4));
-            border-radius: 11px;
-            display: flex;
-            flex-direction: column;
-            padding: 0.5rem;
-            gap: 0.35rem;
-        }
-
-        .stack-phone-screen > div {
-            background: rgba(255,255,255,0.15);
-            border-radius: 3px;
-            height: 18px;
-        }
-
-        .stack-phone-screen > div:first-child {
-            height: 35px;
-        }
-
-        .platform-label {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            padding: 0.3rem 0.7rem;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            font-family: var(--mono);
-            font-size: 0.65rem;
-            color: var(--text-secondary);
-            letter-spacing: 0.05em;
-            z-index: 3;
-        }
-
-        .project-content {
-            padding: 3rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-meta-row {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 1.25rem;
-            flex-wrap: wrap;
-        }
-
-        .project-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.4rem 0.8rem;
-            background: rgba(59, 130, 246, 0.1);
-            color: var(--accent);
-            border-radius: 100px;
-            font-size: 0.72rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            width: fit-content;
-        }
-
-        .project-badge.published {
-            background: rgba(34, 197, 94, 0.1);
-            color: #4ade80;
-        }
-
-        .project-badge.published::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--success);
-        }
-
-        .project-badge.live {
-            background: rgba(34, 197, 94, 0.1);
-            color: #4ade80;
-        }
-
-        .project-badge.live::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--success);
-            border-radius: 50%;
-            box-shadow: 0 0 8px var(--success);
-            animation: pulse 2s ease-in-out infinite;
-        }
-
-        .project-badge.flagship {
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
-            color: var(--accent);
-            border: 1px solid rgba(59, 130, 246, 0.25);
-        }
-
-        .project-badge.independent {
-            background: rgba(139, 92, 246, 0.1);
-            color: #a78bfa;
-        }
-
-        .project-role {
-            font-family: var(--mono);
-            font-size: 0.7rem;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .project-title {
-            font-family: var(--serif);
-            font-size: 1.85rem;
-            margin-bottom: 0.4rem;
-            line-height: 1.2;
-            letter-spacing: -0.01em;
-        }
-
-        .project-subtitle {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .project-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.75;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-impact {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
-            gap: 1rem;
-            margin-bottom: 1.5rem;
-            padding: 1rem 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .impact-stat {
-            display: flex;
-            flex-direction: column;
-            gap: 0.15rem;
-        }
-
-        .impact-value {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-primary);
-        }
-
-        .impact-label {
-            font-size: 0.72rem;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .project-tech span {
-            padding: 0.35rem 0.75rem;
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid var(--border);
-            border-radius: 6px;
-            font-size: 0.78rem;
-            color: var(--text-secondary);
-            font-weight: 500;
-        }
-
-        .project-links {
-            display: flex;
-            gap: 0.75rem;
-            margin-top: auto;
-            flex-wrap: wrap;
-        }
-
-        .project-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--text-primary);
-            text-decoration: none;
-            font-size: 0.85rem;
-            font-weight: 500;
-            padding: 0.7rem 1.1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-
-        .project-link:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: var(--border-strong);
-        }
-
-        .project-link svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        /* Experience Section */
-        .experience-timeline {
-            position: relative;
-            padding-left: 3rem;
-        }
-
-        .experience-timeline::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0;
-            bottom: 0;
-            width: 1px;
-            background: linear-gradient(180deg, var(--accent), transparent);
-        }
-
-        .experience-item {
-            position: relative;
-            padding-bottom: 3.5rem;
-        }
-
-        .experience-item:last-child {
-            padding-bottom: 0;
-        }
-
-        .experience-item::before {
-            content: '';
-            position: absolute;
-            left: -3rem;
-            top: 0.6rem;
-            width: 10px;
-            height: 10px;
-            background: var(--accent);
-            border-radius: 50%;
-            box-shadow: 0 0 20px var(--accent-glow);
-        }
-
-        .experience-date {
-            font-family: var(--mono);
-            color: var(--accent);
-            font-size: 0.78rem;
-            font-weight: 500;
-            letter-spacing: 0.05em;
-            margin-bottom: 0.6rem;
-            text-transform: uppercase;
-        }
-
-        .experience-role {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 0.35rem;
-            letter-spacing: -0.01em;
-        }
-
-        .experience-company {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
-        }
-
-        .experience-description {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            line-height: 1.75;
-            margin-bottom: 1rem;
-        }
-
-        .experience-highlights {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-        }
-
-        .experience-highlights li {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-            line-height: 1.65;
-            padding-left: 1.25rem;
-            position: relative;
-        }
-
-        .experience-highlights li::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 0.6rem;
-            width: 6px;
-            height: 1px;
-            background: var(--accent);
-        }
-
-        /* Publications Section */
-        #publications {
-            background: var(--bg-secondary);
-            max-width: none;
-            padding: 7rem 3rem;
-        }
-
-        .publications-container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .publications-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .publication-card {
-            display: block;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 1rem;
-            padding: 1.75rem;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .publication-card:hover {
-            border-color: rgba(59, 130, 246, 0.3);
-            transform: translateY(-3px);
-            background: var(--bg-elevated);
-        }
-
-        .publication-meta {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            margin-bottom: 1rem;
-            font-family: var(--mono);
-            font-size: 0.72rem;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .publication-meta::before {
-            content: '';
-            width: 6px;
-            height: 6px;
-            background: var(--accent);
-            border-radius: 50%;
-        }
-
-        .publication-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.6rem;
-            line-height: 1.35;
-            letter-spacing: -0.01em;
-        }
-
-        .publication-summary {
-            color: var(--text-secondary);
-            font-size: 0.88rem;
-            line-height: 1.6;
-        }
-
-        .publication-arrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
-            margin-top: 1.25rem;
-            color: var(--accent);
-            font-size: 0.85rem;
-            font-weight: 500;
-        }
-
-        .publication-arrow svg {
-            transition: transform 0.3s ease;
-        }
-
-        .publication-card:hover .publication-arrow svg {
-            transform: translateX(4px);
-        }
-
-        /* Contact Section */
-        #contact {
-            text-align: center;
-            padding: 10rem 3rem;
-            position: relative;
-        }
-
-        #contact .section-header {
-            margin-bottom: 2rem;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .contact-cta {
-            font-family: var(--serif);
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.15;
-            margin-bottom: 2rem;
-            letter-spacing: -0.02em;
-        }
-
-        .contact-cta .highlight {
-            font-style: italic;
-            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .contact-email {
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 3rem;
-        }
-
-        .contact-email a {
-            color: var(--text-primary);
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent);
-            transition: color 0.3s ease;
-        }
-
-        .contact-email a:hover {
-            color: var(--accent);
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.25rem;
-        }
-
-        .social-link {
-            width: 50px;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-            border-radius: 50%;
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        .social-link:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-            transform: translateY(-2px);
-        }
-
-        .social-link svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem;
-            text-align: center;
-            border-top: 1px solid var(--border);
-        }
-
-        footer p {
-            color: var(--text-tertiary);
-            font-size: 0.85rem;
-        }
-
-        /* Animations */
-        @keyframes fadeSlideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Scroll animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Mobile Menu */
-        .menu-toggle {
-            display: none;
-            flex-direction: column;
-            gap: 6px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 0.5rem;
-            z-index: 102;
-            position: relative;
-        }
-
-        .menu-toggle span {
-            width: 24px;
-            height: 2px;
-            background: var(--text-primary);
-            transition: all 0.3s ease;
-        }
-
-        /* Mobile Overlay */
-        .mobile-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(4px);
-            z-index: 99;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .mobile-overlay.active {
-            opacity: 1;
-            visibility: visible;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .about-content {
-                grid-template-columns: 1fr;
-                gap: 3rem;
-            }
-
-            .about-image-wrapper {
-                max-width: 400px;
-                margin: 0 auto;
-            }
-
-            .project-card {
-                grid-template-columns: 1fr;
-            }
-
-            .project-card:nth-child(even) {
-                direction: ltr;
-            }
-
-            .project-image {
-                min-height: 300px;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2.5rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            nav {
-                padding: 1rem 1.5rem;
-            }
-
-            .menu-toggle {
-                display: flex;
-            }
-
-            .nav-links {
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                gap: 2.5rem;
-                transform: translateX(100%);
-                transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                z-index: 100;
-            }
-
-            .nav-links.active {
-                transform: translateX(0);
-            }
-
-            .nav-links a {
-                font-size: 1.75rem;
-                font-weight: 500;
-                padding: 0.5rem 1rem;
-                border-radius: 8px;
-                transition: all 0.3s ease;
-            }
-
-            .nav-links a:hover {
-                background: rgba(59, 130, 246, 0.1);
-                color: var(--accent);
-            }
-
-            body.menu-open {
-                overflow: hidden;
-            }
-
-            .hero,
-            section,
-            #about,
-            #projects,
-            #publications,
-            #contact {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-
-            .hero-status {
-                margin-left: 0;
-                margin-top: 0.5rem;
-            }
-
-            .hero-eyebrow {
-                flex-wrap: wrap;
-            }
-
-            .hero-stats {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 2rem;
-            }
-
-            .hero-cta {
-                flex-direction: column;
-            }
-
-            .btn {
-                justify-content: center;
-            }
-
-            .about-details {
-                grid-template-columns: 1fr;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .experience-timeline {
-                padding-left: 2rem;
-            }
-
-            .experience-item::before {
-                left: -2rem;
-            }
-
-            .project-content {
-                padding: 2rem;
-            }
-
-            .platform-stack {
-                transform: scale(0.85);
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ahmed Sherif | Senior Flutter Developer</title>
+  <meta name="description" content="Senior Flutter Developer with 4+ years architecting and shipping production apps in education, healthcare, and hospitality. Currently leading Flutter development of Hessaty at Sadeema.">
+  <meta name="keywords" content="Senior Flutter Developer, Flutter, Dart, Clean Architecture, BLoC, Offline-First, Modular Architecture, Supabase, Next.js, Cairo, Egypt">
+  <link rel="canonical" href="https://ahmed-sherif-portfolio.vercel.app/">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ahmed-sherif-portfolio.vercel.app/">
+  <meta property="og:title" content="Ahmed Sherif | Senior Flutter Developer">
+  <meta property="og:description" content="Architecting offline-first, modular Flutter apps. Currently leading Flutter development of Hessaty at Sadeema.">
+  <meta property="og:image" content="https://ahmed-sherif-portfolio.vercel.app/og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Ahmed Sherif, Senior Flutter Developer">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Ahmed Sherif | Senior Flutter Developer">
+  <meta name="twitter:description" content="Architecting offline-first, modular Flutter apps. Currently leading Flutter development of Hessaty at Sadeema.">
+  <meta name="twitter:image" content="https://ahmed-sherif-portfolio.vercel.app/og.png">
+  <meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#13241d" media="(prefers-color-scheme: dark)">
+
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="preload" href="assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/geist-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/img/me-800.webp" as="image" type="image/webp" imagesrcset="assets/img/me-480.webp 480w, assets/img/me-800.webp 800w" imagesizes="(min-width: 900px) 40vw, 90vw">
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+
+  <script>
+    try {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        document.documentElement.dataset.theme = savedTheme;
+      }
+    } catch (e) {}
+    document.documentElement.classList.add('js');
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ahmed Sherif",
+      "jobTitle": "Senior Flutter Developer",
+      "worksFor": { "@type": "Organization", "name": "Sadeema Company" },
+      "address": { "@type": "PostalAddress", "addressLocality": "Cairo", "addressCountry": "EG" },
+      "email": "mailto:ahmedsherif4175@gmail.com",
+      "url": "https://ahmed-sherif-portfolio.vercel.app/",
+      "sameAs": [
+        "https://github.com/AhmedSherif4",
+        "https://www.linkedin.com/in/ahmed-sherif01",
+        "https://medium.com/@ahmedsherif4175",
+        "https://www.youtube.com/@ahmedsherif948"
+      ]
+    }
+  </script>
+  <script src="assets/js/site.js" defer></script>
 </head>
-<body id="top-body">
-    <div id="top"></div>
-    <div class="cursor-glow" id="cursor"></div>
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+<body>
+  <svg class="sprite" aria-hidden="true" focusable="false">
+    <symbol id="i-monogram" viewBox="-10.9 -74.2 135.7 77.6"><path d="M38.80-60L7.30-15.60Q3.80-10.70 3.30-7.75Q2.80-4.80 4.80-3.45Q6.80-2.10 10.90-2L10.90-2L10.40 0Q7.10-0.20 4.10-0.25Q1.10-0.30-1.60-0.30L-1.60-0.30Q-4-0.30-5.65-0.25Q-7.30-0.20-8.90 0L-8.90 0L-8.40-2Q-6.90-2.40-5.35-3.40Q-3.80-4.40-1.95-6.30Q-0.10-8.20 2-11.30L2-11.30L44.70-71.30Q45.40-71.30 46.05-71.30Q46.70-71.30 47.40-71.30L47.40-71.30L51.40-8.40Q51.70-4.80 53.25-3.45Q54.80-2.10 56.30-2L56.30-2L55.90 0Q53.70-0.20 50.30-0.25Q46.90-0.30 43.80-0.30L43.80-0.30Q39.90-0.30 36.40-0.25Q32.90-0.20 30.80 0L30.80 0L31.20-2Q36-2.20 38-3.75Q40-5.30 39.80-10.40L39.80-10.40L37.20-58.70L38.80-60ZM14-26.80L15.80-28.80L45-28.80L44.20-26.80L14-26.80ZM120.80-71.50L122.80-71.50Q121.80-68.90 120.10-63.95Q118.40-59 116.90-51.10L116.90-51.10L114.90-51.10Q115.20-52.50 115.35-54Q115.50-55.50 115.50-56.80L115.50-56.80Q115.50-60.50 113.95-63.55Q112.40-66.60 109.30-68.35Q106.20-70.10 101.20-70.10L101.20-70.10Q95.60-70.10 91.75-67.20Q87.90-64.30 87.90-58L87.90-58Q87.90-54.30 89.70-51.05Q91.50-47.80 94.25-44.80Q97-41.80 100.20-38.80Q103.40-35.80 106.20-32.65Q109-29.50 110.80-26Q112.60-22.50 112.60-18.30L112.60-18.30Q112.60-13.10 110.15-9.35Q107.70-5.60 103.85-3.25Q100-0.90 95.45 0.25Q90.90 1.40 86.50 1.40L86.50 1.40Q82.30 1.40 79.45 0.70Q76.60 0 74.70-1.10Q72.80-2.20 71.30-3.20L71.30-3.20Q70.20-4 69.25-4.35Q68.30-4.70 67.70-4.70L67.70-4.70Q66.40-4.70 65.55-3.40Q64.70-2.10 63.60 0.70L63.60 0.70L61.60 0.70Q62.50-1.50 63.50-4.40Q64.50-7.30 65.70-11.85Q66.90-16.40 68.40-23.30L68.40-23.30L70.40-23.30Q69.90-21.30 69.65-19.30Q69.40-17.30 69.50-15.30L69.50-15.30Q69.80-8.40 73.75-4.55Q77.70-0.70 85.80-0.70L85.80-0.70Q92.40-0.70 96.15-3.60Q99.90-6.50 99.90-12.50L99.90-12.50Q99.90-16.70 98.25-20.05Q96.60-23.40 94.05-26.35Q91.50-29.30 88.60-32.10Q85.70-34.90 83.15-37.90Q80.60-40.90 79-44.50Q77.40-48.10 77.40-52.50L77.40-52.50Q77.40-57.40 79.40-61.10Q81.40-64.80 84.70-67.25Q88-69.70 92.05-70.95Q96.10-72.20 100.20-72.20L100.20-72.20Q105-72.20 108.25-71.05Q111.50-69.90 114.20-67.90L114.20-67.90Q115.30-67.10 116.15-66.65Q117-66.20 117.50-66.20L117.50-66.20Q118.90-66.20 120.80-71.50L120.80-71.50Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 256 256"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.660,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></symbol>
+    <symbol id="i-caret-left" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></symbol>
+    <symbol id="i-caret-right" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 256 256"><path d="M120,40V16a8,8,0,0,1,16,0V40a8,8,0,0,1-16,0Zm72,88a64,64,0,1,1-64-64A64.07,64.07,0,0,1,192,128Zm-16,0a48,48,0,1,0-48,48A48.05,48.05,0,0,0,176,128ZM58.34,69.66A8,8,0,0,0,69.66,58.34l-16-16A8,8,0,0,0,42.34,53.66Zm0,116.68-16,16a8,8,0,0,0,11.32,11.32l16-16a8,8,0,0,0-11.320-11.32ZM192,72a8,8,0,0,0,5.66-2.34l16-16a8,8,0,0,0-11.32-11.32l-16,16A8,8,0,0,0,192,72Zm5.66,114.34a8,8,0,0,0-11.32,11.32l16,16a8,8,0,0,0,11.32-11.32ZM48,128a8,8,0,0,0-8-8H16a8,8,0,0,0,0,16H40A8,8,0,0,0,48,128Zm80,80a8,8,0,0,0-8,8v24a8,8,0,0,0,16,0V216A8,8,0,0,0,128,208Zm112-88H216a8,8,0,0,0,0,16h24a8,8,0,0,0,0-16Z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 256 256"><path d="M233.54,142.23a8,8,0,0,0-8-2,88.08,88.08,0,0,1-109.8-109.8,8,8,0,0,0-10-10,104.84,104.84,0,0,0-52.91,37A104,104,0,0,0,136,224a103.09,103.09,0,0,0,62.52-20.88,104.84,104.84,0,0,0,37-52.91A8,8,0,0,0,233.54,142.23ZM188.9,190.34A88,88,0,0,1,65.66,67.11a89,89,0,0,1,31.4-26A106,106,0,0,0,96,56,104.11,104.11,0,0,0,200,160a106,106,0,0,0,14.92-1.06A89,89,0,0,1,188.9,190.34Z"/></symbol>
+    <symbol id="i-list" viewBox="0 0 256 256"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></symbol>
+    <symbol id="i-google-play" viewBox="0 0 256 256"><path d="M239.82,114.19,72,18.16a16,16,0,0,0-16.12,0A15.68,15.68,0,0,0,48,31.87V224.13a15.68,15.68,0,0,0,7.92,13.67,16,16,0,0,0,16.12,0l167.78-96a15.75,15.75,0,0,0,0-27.62ZM64,212.67V43.33L148.69,128Zm96-73.36,18.92,18.92-88.5,50.66ZM90.4,47.1l88.53,50.67L160,116.69ZM193.31,150l-22-22,22-22,38.43,22Z"/></symbol>
+    <symbol id="i-app-store" viewBox="0 0 256 256"><path d="M64.34,196.07l-9.45,16a8,8,0,1,1-13.78-8.14l9.46-16a8,8,0,1,1,13.77,8.14ZM232,152H184.2l-30.73-52a8,8,0,1,0-13.77,8.140l61.41,103.93a8,8,0,0,0,13.78-8.14L193.66,168H232a8,8,0,0,0,0-16Zm-89.53,0H90.38L158.89,36.07a8,8,0,0,0-13.78-8.14L128,56.89l-17.11-29a8,8,0,1,0-13.78,8.14l21.6,36.55L71.8,152H24a8,8,0,0,0,0,16H142.47a8,8,0,1,0,0-16Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.070 3.633 17.700 3.633 17.700c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.070 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.760-1.605-2.665-.3-5.466-1.332-5.466-5.930 0-1.310.465-2.380 1.235-3.220-.135-.303-.540-1.523.105-3.176 0 0 1.005-.322 3.300 1.230.960-.267 1.980-.399 3-.405 1.020.006 2.040.138 3 .405 2.280-1.552 3.285-1.230 3.285-1.230.645 1.653.240 2.873.120 3.176.765.840 1.230 1.910 1.230 3.220 0 4.610-2.805 5.625-5.475 5.920.420.360.810 1.096.810 2.220 0 1.606-.015 2.896-.015 3.286 0 .315.210.690.825.570C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.070 0 12 0 12s0 3.930.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.930 24 12 24 12s0-3.930-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></symbol>
+    <symbol id="i-medium" viewBox="0 0 24 24"><path d="M4.21 0A4.201 4.201 0 0 0 0 4.21v15.58A4.201 4.201 0 0 0 4.21 24h15.58A4.201 4.201 0 0 0 24 19.790v-1.093c-.137.013-.278.020-.422.020-2.577 0-4.027-2.146-4.090-4.832a7.592 7.592 0 0 1 .022-.708c.093-1.186.475-2.241 1.105-3.022a3.885 3.885 0 0 1 1.395-1.1c.468-.237 1.127-.367 1.664-.367h.023c.101 0 .202.004.303.010V4.211A4.201 4.201 0 0 0 19.790 0Zm.198 5.583h4.165l3.588 8.435 3.590-8.435h3.864v.146l-.019.004c-.705.160-1.063.397-1.063 1.254h-.003l.003 10.274c.060.676.424.885 1.063 1.030l.020.004v.145h-4.923v-.145l.019-.005c.639-.144.994-.353 1.054-1.030V7.267l-4.745 11.150h-.261L6.150 7.569v9.445c0 .857.358 1.094 1.063 1.253l.020.004v.147H4.405v-.147l.019-.004c.705-.160 1.065-.397 1.065-1.253V6.987c0-.857-.358-1.094-1.064-1.254l-.018-.004zm19.250 3.668c-1.086.023-1.733 1.323-1.813 3.124H24V9.298a1.378 1.378 0 0 0-.342-.047Zm-1.862 3.632c-.1 1.756.860 3.239 2.204 3.634v-3.634z"/></symbol>
+  </svg>
 
-    <!-- Navigation -->
-    <nav>
-        <a href="#top" class="logo">AS.</a>
-        <ul class="nav-links" id="navLinks">
-            <li><a href="#about">About</a></li>
-            <li><a href="#skills">Expertise</a></li>
-            <li><a href="#projects">Work</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-            <span></span>
-            <span></span>
-            <span></span>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="#top" aria-label="Ahmed Sherif, back to top">
+        <svg class="nav__mark" aria-hidden="true"><use href="#i-monogram"/></svg>
+      </a>
+      <ul class="nav__links" id="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#writing">Writing</a></li>
+        <li><a href="#about">About</a></li>
+        <li class="nav__cta-item"><a class="btn btn--small btn--primary" href="mailto:ahmedsherif4175@gmail.com">Email me</a></li>
+      </ul>
+      <div class="nav__tools">
+        <button class="icon-btn" type="button" id="theme-toggle" aria-label="Switch color theme">
+          <svg class="icon icon--sun" aria-hidden="true"><use href="#i-sun"/></svg>
+          <svg class="icon icon--moon" aria-hidden="true"><use href="#i-moon"/></svg>
         </button>
+        <button class="icon-btn nav__toggle" type="button" id="nav-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="nav-links">
+          <svg class="icon" aria-hidden="true"><use href="#i-list"/></svg>
+        </button>
+      </div>
     </nav>
+  </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="hero-eyebrow">
-                Senior Software Engineer &middot; Team Lead
-                <span class="hero-status">Open to opportunities</span>
-            </div>
-            <h1 class="hero-title">
-                Engineering <span class="highlight">scalable</span> products,<br>
-                leading the teams<br>
-                that ship them.
-            </h1>
-            <p class="hero-subtitle">
-                I'm Ahmed Sherif, a Senior Flutter Developer and Software Team Lead based in Cairo.
-                I lead a cross-functional team of six, own infrastructure for 26+ projects, and ship
-                production software across mobile and web.
-            </p>
-            <div class="hero-cta">
-                <a href="#projects" class="btn btn-primary">
-                    View My Work
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                </a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <div class="stat-value">4+</div>
-                    <div class="stat-label">Years Engineering</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">26+</div>
-                    <div class="stat-label">Projects Shipped</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">6</div>
-                    <div class="stat-label">Engineers Led</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">8</div>
-                    <div class="stat-label">Apps in Production</div>
-                </div>
-            </div>
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <h1 class="hero__title" id="hero-title"><span class="hero__line">Ahmed</span> <span class="hero__line">Sherif</span></h1>
+          <p class="hero__role">Senior Flutter Developer at Sadeema</p>
+          <p class="hero__lede">Architecting offline-first, modular Flutter apps. Currently leading Flutter development of Hessaty.</p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#work">View work</a>
+            <a class="btn btn--ghost" href="mailto:ahmedsherif4175@gmail.com">Email me</a>
+          </div>
+          <ul class="stats">
+            <li><strong>4+</strong> years engineering</li>
+            <li><strong>26+</strong> projects</li>
+            <li><strong>6</strong> engineers led</li>
+            <li><strong>9</strong> apps in production</li>
+          </ul>
         </div>
+        <figure class="hero__portrait">
+          <img src="assets/img/me-800.webp" srcset="assets/img/me-480.webp 480w, assets/img/me-800.webp 800w" sizes="(min-width: 900px) 40vw, 90vw" width="800" height="1000" alt="Ahmed Sherif in a grey blazer in front of the Muhammad Ali Mosque in Cairo" fetchpriority="high">
+        </figure>
+      </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <div class="about-content">
-            <div class="about-image-wrapper reveal">
-                <img src="me.jpg" alt="Ahmed Sherif" class="about-image">
+    <section class="section work" id="work" aria-labelledby="work-title">
+      <header class="section__head">
+        <h2 class="section__title" id="work-title">Products I've architected, led and shipped</h2>
+      </header>
+
+      <article class="case case--hessaty" aria-labelledby="hessaty-title">
+        <div class="case__intro">
+          <div class="project-head">
+            <img class="logo-tile" src="projects_logos/hessaty.png" width="56" height="56" alt="Hessaty logo" loading="lazy">
+            <div>
+              <p class="project-meta"><span class="status">Published</span> Sadeema</p>
+              <h3 class="case__title" id="hessaty-title">Hessaty <span class="case__title-ar">(<span lang="ar" dir="rtl">حصتي</span>)</span></h3>
             </div>
-            <div class="about-text reveal">
-                <div class="section-eyebrow">About Me</div>
-                <h2>Building production software, owning delivery end-to-end</h2>
-                <p>
-                    Senior Flutter Developer and Software Team Lead with <strong>4+ years</strong> designing,
-                    delivering, and scaling production software across mobile and web. Currently leading a
-                    cross-functional team of six at <strong>Orange Bay</strong>, owning technical direction,
-                    delivery, and stakeholder communication for a multi-platform product ecosystem.
-                </p>
-                <p>
-                    I've established the foundational infrastructure for <strong>26+ projects</strong> &mdash;
-                    from domain configuration and Cloudflare setup to end-to-end delivery planning. Three apps
-                    published on Google Play and the App Store with adoption across <strong>tens of thousands of
-                    users</strong>, backed by deep expertise in Clean Architecture, BLoC, and performance optimization.
-                </p>
-                <p>
-                    Backend-aware engineer comfortable across <strong>Supabase, Django, and Next.js</strong>, with
-                    a record of translating business requirements into scalable, maintainable systems. Also an
-                    independent builder of <strong>Aura</strong>, a full-stack e-commerce ecosystem.
-                </p>
-                <div class="about-details">
-                    <div class="about-detail">
-                        <span class="about-detail-label">Location</span>
-                        <span class="about-detail-value">Cairo, Egypt &middot; Remote</span>
-                    </div>
-                    <div class="about-detail">
-                        <span class="about-detail-label">Current Role</span>
-                        <span class="about-detail-value">Senior Engineer &amp; Team Lead</span>
-                    </div>
-                    <div class="about-detail">
-                        <span class="about-detail-label">Education</span>
-                        <span class="about-detail-value">Cairo University</span>
-                    </div>
-                    <div class="about-detail">
-                        <span class="about-detail-label">Languages</span>
-                        <span class="about-detail-value">English &middot; Arabic &middot; Greek</span>
-                    </div>
-                </div>
-            </div>
+          </div>
+          <p class="case__summary">Classroom management app for teachers. Flutter lead at Sadeema, owning architecture, feature delivery, and release quality.</p>
+          <div class="link-row">
+            <a class="text-link" href="https://play.google.com/store/apps/details?id=com.tassese.tassese_teacher" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-google-play"/></svg>Google Play</a>
+            <a class="text-link" href="https://apps.apple.com/ie/app/%D8%AD%D8%B5%D8%AA%D9%8A/id6760269880" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-app-store"/></svg>App Store</a>
+          </div>
         </div>
+        <div class="case__detail">
+          <ul class="highlights">
+            <li>Offline-first portfolio sync with lossless merge.</li>
+            <li>PDF + native RTL Excel report engine.</li>
+            <li>13 feature modules.</li>
+            <li>Auto-graded exams with math equations.</li>
+          </ul>
+          <p class="tags">Flutter, BLoC, Clean Architecture, Hive, Offline-First, Firebase</p>
+        </div>
+        <div class="shot-strip">
+          <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-1.webp" width="499" height="1080" alt="Hessaty screenshot: your whole school day in one place" loading="lazy"></button>
+          <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-2.webp" width="499" height="1080" alt="Hessaty screenshot: preparing a lesson in minutes" loading="lazy"></button>
+          <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-3.webp" width="499" height="1080" alt="Hessaty screenshot: organizing lesson materials" loading="lazy"></button>
+          <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-4.webp" width="499" height="1080" alt="Hessaty screenshot: in-class interaction and student groups" loading="lazy"></button>
+          <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-5.webp" width="499" height="1080" alt="Hessaty screenshot: class management and student performance" loading="lazy"></button>
+        </div>
+      </article>
+
+      <article class="case case--nerdly" aria-labelledby="nerdly-title">
+        <div class="project-head">
+          <img class="logo-tile" src="projects_logos/nerdly.png" width="56" height="56" alt="Nerdly logo" loading="lazy">
+          <div>
+            <p class="project-meta"><span class="status">In store review</span> Freelance</p>
+            <h3 class="case__title" id="nerdly-title">Nerdly</h3>
+          </div>
+        </div>
+        <p class="case__summary case__summary--wide">Student-expert learning marketplace. A two-sided marketplace where students post learning requests, experts send offers, and paid sessions run live inside the app, with recordings kept in each student's library.</p>
+        <ul class="highlights highlights--grid">
+          <li>Architected the app on in-house packages (design system, UI components, networking, storage, logging, notifications) beneath a Clean Architecture + BLoC feature layer.</li>
+          <li>Caching layer combining Stale-While-Revalidate and TTL-based cache-aside over an encrypted local store, with instant screens and an explicit offline mode.</li>
+          <li>HLS video player on BunnyCDN that reports playback KPIs (time-to-first-frame, stall count and duration, completion rate). Jitsi live sessions embedded in a tuned WebView that opens straight into the call.</li>
+          <li>JWT auth with silent token refresh, Google and Apple sign-in, WebView payments (card, mobile wallet, Fawry) with status verification, and Firebase Crashlytics, Analytics, and Performance.</li>
+        </ul>
+        <p class="tags">Flutter, Modular Packages, BLoC, fpdart, HLS, Jitsi, Firebase</p>
+      </article>
+
+      <article class="case case--omarina" aria-labelledby="omarina-title">
+        <div class="device-pair">
+          <button class="shot shot--browser" type="button" data-group="o-marina">
+            <span class="browser__bar" aria-hidden="true">o-marina.com</span>
+            <img src="assets/shots/o-marina/o-marina-desktop-760.webp" srcset="assets/shots/o-marina/o-marina-desktop-760.webp 760w, assets/shots/o-marina/o-marina-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/o-marina/o-marina-desktop.webp" width="1440" height="900" alt="O-Marina customer website on desktop" loading="lazy">
+          </button>
+          <button class="shot shot--phone device-pair__phone" type="button" data-group="o-marina">
+            <img src="assets/shots/o-marina/o-marina-mobile-360.webp" data-full="assets/shots/o-marina/o-marina-mobile.webp" width="780" height="1688" alt="O-Marina customer website on mobile" loading="lazy">
+          </button>
+        </div>
+        <div class="case__body">
+          <div class="project-head">
+            <img class="logo-tile" src="projects_logos/o-marina.svg" width="56" height="56" alt="O-Marina logo" loading="lazy">
+            <div>
+              <p class="project-meta"><span class="status">Flagship</span> Orange Bay</p>
+              <h3 class="case__title" id="omarina-title">O-Marina Ecosystem</h3>
+            </div>
+          </div>
+          <p class="case__summary">Multi-platform hospitality platform. 3 web apps (admin, owner, customer) + 2 mobile apps. Tech-lead role: architecture, cross-platform consistency, and delivery coordination across all five surfaces.</p>
+          <ul class="mini-stats">
+            <li><strong>5</strong> surfaces</li>
+            <li><strong>6</strong> engineers led</li>
+            <li><strong>26+</strong> projects</li>
+          </ul>
+          <p class="tags">Flutter, Next.js, Supabase, Clean Architecture, BLoC, Cloudflare</p>
+          <div class="link-row">
+            <a class="text-link" href="https://o-marina.com/en" target="_blank" rel="noopener">Visit live site</a>
+          </div>
+        </div>
+      </article>
+
+      <h3 class="work__subhead">More projects</h3>
+      <div class="work-grid">
+        <article class="tile tile--web tile--wide" aria-labelledby="ob-title">
+          <div class="device-pair">
+            <button class="shot shot--browser" type="button" data-group="orange-bay">
+              <span class="browser__bar" aria-hidden="true">orangebayhurghada.com</span>
+              <img src="assets/shots/orange-bay/orange-bay-desktop-760.webp" srcset="assets/shots/orange-bay/orange-bay-desktop-760.webp 760w, assets/shots/orange-bay/orange-bay-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/orange-bay/orange-bay-desktop.webp" width="1440" height="900" alt="orangebayhurghada.com homepage on desktop" loading="lazy">
+            </button>
+            <button class="shot shot--phone device-pair__phone" type="button" data-group="orange-bay">
+              <img src="assets/shots/orange-bay/orange-bay-mobile-360.webp" data-full="assets/shots/orange-bay/orange-bay-mobile.webp" width="780" height="1688" alt="orangebayhurghada.com homepage on mobile" loading="lazy">
+            </button>
+          </div>
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/orange-bay.png" width="56" height="56" alt="Orange Bay logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Live</span> Orange Bay</p>
+                <h4 class="tile__title" id="ob-title">orangebayhurghada.com</h4>
+              </div>
+            </div>
+            <p>Public-facing hospitality web platform. Directed delivery, coordinating stakeholders, designers, and developers. Focus on scalability, SEO, and performance.</p>
+            <a class="text-link" href="https://orangebayhurghada.com" target="_blank" rel="noopener">Visit live site</a>
+          </div>
+        </article>
+
+        <article class="tile tile--web" aria-labelledby="aura-title">
+          <div class="device-pair">
+            <button class="shot shot--browser" type="button" data-group="aura">
+              <span class="browser__bar" aria-hidden="true">aurawearr.com</span>
+              <img src="assets/shots/aura/aura-desktop-760.webp" srcset="assets/shots/aura/aura-desktop-760.webp 760w, assets/shots/aura/aura-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/aura/aura-desktop.webp" width="1440" height="900" alt="Aura storefront homepage on desktop" loading="lazy">
+            </button>
+            <button class="shot shot--phone device-pair__phone" type="button" data-group="aura">
+              <img src="assets/shots/aura/aura-mobile-360.webp" data-full="assets/shots/aura/aura-mobile.webp" width="780" height="1688" alt="Aura storefront homepage on mobile" loading="lazy">
+            </button>
+          </div>
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/aura.png" width="56" height="56" alt="Aura logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Live</span> Built solo</p>
+                <h4 class="tile__title" id="aura-title">Aura</h4>
+              </div>
+            </div>
+            <p>Independent full-stack e-commerce ecosystem, built and run solo, with a live customer storefront and admin dashboard. I owned architecture, infrastructure, frontend, backend, and deployment end-to-end.</p>
+            <p class="tags">Next.js, Supabase, PostgreSQL, Vercel, Stripe</p>
+            <a class="text-link" href="https://www.aurawearr.com/" target="_blank" rel="noopener">Visit live site</a>
+          </div>
+        </article>
+
+        <article class="tile tile--web" aria-labelledby="graphite-title">
+          <div class="device-pair">
+            <button class="shot shot--browser" type="button" data-group="graphite">
+              <span class="browser__bar" aria-hidden="true">graphite-web-silk.vercel.app</span>
+              <img src="assets/shots/graphite/graphite-desktop-760.webp" srcset="assets/shots/graphite/graphite-desktop-760.webp 760w, assets/shots/graphite/graphite-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/graphite/graphite-desktop.webp" width="1440" height="900" alt="Graphite tech accessories storefront on desktop" loading="lazy">
+            </button>
+            <button class="shot shot--phone device-pair__phone" type="button" data-group="graphite">
+              <img src="assets/shots/graphite/graphite-mobile-360.webp" data-full="assets/shots/graphite/graphite-mobile.webp" width="780" height="1688" alt="Graphite storefront on mobile" loading="lazy">
+            </button>
+          </div>
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/graphite.svg" width="56" height="56" alt="Graphite logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Live</span> Freelance</p>
+                <h4 class="tile__title" id="graphite-title">Graphite</h4>
+              </div>
+            </div>
+            <p>Tech accessories store. Bilingual Arabic/English Next.js storefront on Vercel, with a "Find my setup" quiz that recommends compatible bundles by phone model and budget.</p>
+            <a class="text-link" href="https://graphite-web-silk.vercel.app/" target="_blank" rel="noopener">Visit live site</a>
+          </div>
+        </article>
+
+        <article class="tile tile--web tile--wide" aria-labelledby="you-title">
+          <div class="device-pair">
+            <button class="shot shot--browser" type="button" data-group="you">
+              <span class="browser__bar" aria-hidden="true">you-website-navy.vercel.app</span>
+              <img src="assets/shots/you/you-desktop-760.webp" srcset="assets/shots/you/you-desktop-760.webp 760w, assets/shots/you/you-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/you/you-desktop.webp" width="1440" height="900" alt="YOU women's fashion storefront on desktop" loading="lazy">
+            </button>
+            <button class="shot shot--phone device-pair__phone" type="button" data-group="you">
+              <img src="assets/shots/you/you-mobile-360.webp" data-full="assets/shots/you/you-mobile.webp" width="780" height="1688" alt="YOU storefront on mobile" loading="lazy">
+            </button>
+          </div>
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/you.jpeg" width="56" height="56" alt="YOU logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Live</span> Freelance</p>
+                <h4 class="tile__title" id="you-title">YOU</h4>
+              </div>
+            </div>
+            <p>Women's fashion store. Storefront with customer accounts, collections and new-drop releases, order tracking, and Meta Pixel integration for the brand's ad campaigns.</p>
+            <a class="text-link" href="https://you-website-navy.vercel.app/" target="_blank" rel="noopener">Visit live site</a>
+          </div>
+        </article>
+
+        <article class="tile tile--app tile--full" aria-labelledby="tasesse-title">
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/tasesse.png" width="56" height="56" alt="Tasesse logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Published</span> Education</p>
+                <h4 class="tile__title" id="tasesse-title">Tasesse</h4>
+              </div>
+            </div>
+            <p>Cross-platform educational app. Multi-role (students, parents, institutions), 10,000+ active users. Course management with interactive quizzes, collaborative resource sharing, and a real-time analytics dashboard tracking 50+ metrics. Stripe and Paymob subscriptions.</p>
+            <div class="link-row">
+              <a class="text-link" href="https://play.google.com/store/apps/details?id=com.edu_tasses.tasesse_app" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-google-play"/></svg>Google Play</a>
+              <a class="text-link" href="https://apps.apple.com/eg/app/taseese-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3/id6477544252" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-app-store"/></svg>App Store</a>
+            </div>
+          </div>
+          <div class="shot-row">
+            <button class="shot shot--poster" type="button" data-group="tasesse"><img src="assets/shots/tasesse/tasesse-1.webp" width="498" height="1080" alt="Tasesse screenshot: first step toward excellence" loading="lazy"></button>
+            <button class="shot shot--poster" type="button" data-group="tasesse"><img src="assets/shots/tasesse/tasesse-2.webp" width="498" height="1080" alt="Tasesse screenshot: materials for every stage" loading="lazy"></button>
+            <button class="shot shot--poster" type="button" data-group="tasesse"><img src="assets/shots/tasesse/tasesse-3.webp" width="498" height="1080" alt="Tasesse screenshot: performance analytics" loading="lazy"></button>
+            <button class="shot shot--poster" type="button" data-group="tasesse"><img src="assets/shots/tasesse/tasesse-4.webp" width="498" height="1080" alt="Tasesse screenshot: varied exams by level" loading="lazy"></button>
+          </div>
+        </article>
+
+        <article class="tile tile--app" aria-labelledby="medking-title">
+          <div class="shot-row shot-row--phones">
+            <button class="shot shot--phone" type="button" data-group="medking"><img src="assets/shots/medking/medking-2.webp" width="499" height="1080" alt="MedKing screenshot: home with general courses" loading="lazy"></button>
+            <button class="shot shot--phone" type="button" data-group="medking"><img src="assets/shots/medking/medking-4.webp" width="499" height="1080" alt="MedKing screenshot: progress tasks" loading="lazy"></button>
+            <button class="shot shot--phone" type="button" data-group="medking"><img src="assets/shots/medking/medking-3.webp" width="499" height="1080" alt="MedKing screenshot: choosing a faculty" loading="lazy"></button>
+          </div>
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/medking.png" width="56" height="56" alt="MedKing logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Published</span> Medical education</p>
+                <h4 class="tile__title" id="medking-title">MedKing</h4>
+              </div>
+            </div>
+            <p>Medical education platform. 500+ expert-led courses with video lectures, interactive assessments, and structured learning paths.</p>
+            <div class="link-row">
+              <a class="text-link" href="https://play.google.com/store/apps/details?id=com.MedKingAppLLC.MedKing" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-google-play"/></svg>Google Play</a>
+              <a class="text-link" href="https://apps.apple.com/us/app/medking/id6664068510" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-app-store"/></svg>App Store</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="tile tile--app" aria-labelledby="mideo-title">
+          <div class="shot-row shot-row--phones">
+            <button class="shot shot--phone" type="button" data-group="mideo"><img src="assets/shots/mideo/mideo-2.webp" width="498" height="1080" alt="Mideo screenshot: home with general courses and universities" loading="lazy"></button>
+            <button class="shot shot--phone" type="button" data-group="mideo"><img src="assets/shots/mideo/mideo-1.webp" width="498" height="1080" alt="Mideo screenshot: splash screen" loading="lazy"></button>
+            <button class="shot shot--phone" type="button" data-group="mideo"><img src="assets/shots/mideo/mideo-3.webp" width="498" height="1080" alt="Mideo screenshot: profile and account settings" loading="lazy"></button>
+          </div>
+          <div class="tile__body">
+            <div class="project-head project-head--sm">
+              <img class="logo-tile" src="projects_logos/mideo.png" width="56" height="56" alt="Mideo logo" loading="lazy">
+              <div>
+                <p class="project-meta"><span class="status">Published</span> Healthcare</p>
+                <h4 class="tile__title" id="mideo-title">Mideo</h4>
+              </div>
+            </div>
+            <p>Medical learning &amp; healthcare app for 5,000+ healthcare professionals. Combines learning with appointment booking, real-time notifications, and payments handling 200+ daily transactions.</p>
+            <div class="link-row">
+              <a class="text-link" href="https://play.google.com/store/apps/details?id=com.medkingApp.mideo" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-google-play"/></svg>Google Play</a>
+              <a class="text-link" href="https://apps.apple.com/app/mideo-app/id6749076532" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-app-store"/></svg>App Store</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="section-header reveal">
-            <div class="section-eyebrow">Expertise</div>
-            <h2 class="section-title">A senior engineer's toolkit</h2>
-            <p class="section-lede">
-                Depth in Flutter and architecture, breadth across full-stack, infrastructure, and team leadership &mdash;
-                the layers it takes to actually ship and run software at scale.
-            </p>
-        </div>
-        <div class="skills-grid">
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="5" y="2" width="14" height="20" rx="2.5" />
-                        <line x1="12" y1="18" x2="12.01" y2="18" />
-                    </svg>
-                </div>
-                <h3>Senior Mobile Engineering</h3>
-                <p>Architecting and shipping cross-platform Flutter apps from concept through App Store and Play Store release.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Flutter</span>
-                    <span class="skill-tag">Dart</span>
-                    <span class="skill-tag">iOS</span>
-                    <span class="skill-tag">Android</span>
-                    <span class="skill-tag">Kotlin</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <polygon points="12 2 2 7 12 12 22 7 12 2" />
-                        <polyline points="2 17 12 22 22 17" />
-                        <polyline points="2 12 12 17 22 12" />
-                    </svg>
-                </div>
-                <h3>Architecture &amp; Patterns</h3>
-                <p>Designing scalable codebases with Clean Architecture, SOLID, and proven design patterns for long-term maintainability.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Clean Architecture</span>
-                    <span class="skill-tag">SOLID</span>
-                    <span class="skill-tag">BLoC</span>
-                    <span class="skill-tag">Repository</span>
-                    <span class="skill-tag">DI</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <ellipse cx="12" cy="5" rx="9" ry="3" />
-                        <path d="M3 5v14a9 3 0 0 0 18 0V5" />
-                        <path d="M3 12a9 3 0 0 0 18 0" />
-                    </svg>
-                </div>
-                <h3>Full-Stack &amp; Backend</h3>
-                <p>Backend-aware engineering across Supabase, Django, and Next.js &mdash; from data modeling to RESTful APIs and real-time sync.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Supabase</span>
-                    <span class="skill-tag">Next.js</span>
-                    <span class="skill-tag">React</span>
-                    <span class="skill-tag">Django</span>
-                    <span class="skill-tag">PostgreSQL</span>
-                    <span class="skill-tag">REST</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17.5 19a4.5 4.5 0 1 0 0-9 5.5 5.5 0 0 0-10.8-1.5A4 4 0 0 0 6.5 19z" />
-                    </svg>
-                </div>
-                <h3>Infrastructure &amp; DevOps</h3>
-                <p>Owning infrastructure end-to-end: domain acquisition, Cloudflare security policies, deployments, and release pipelines.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Cloudflare</span>
-                    <span class="skill-tag">Vercel</span>
-                    <span class="skill-tag">GitHub Actions</span>
-                    <span class="skill-tag">Codemagic</span>
-                    <span class="skill-tag">Firebase</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                        <circle cx="9" cy="7" r="4" />
-                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                </div>
-                <h3>Team Leadership</h3>
-                <p>Leading six engineers and designers: sprint planning, code review, technical roadmapping, and mentorship for consistent delivery.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Sprint Planning</span>
-                    <span class="skill-tag">Code Review</span>
-                    <span class="skill-tag">Roadmapping</span>
-                    <span class="skill-tag">Mentorship</span>
-                    <span class="skill-tag">Stakeholder Comms</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 2L9.5 8.5 3 11l6.5 2.5L12 20l2.5-6.5L21 11l-6.5-2.5L12 2z" />
-                    </svg>
-                </div>
-                <h3>AI-Augmented Development</h3>
-                <p>Integrating Claude, Cursor, and Copilot across the team for accelerated scaffolding, architectural reasoning, and faster debugging.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Claude</span>
-                    <span class="skill-tag">Cursor</span>
-                    <span class="skill-tag">Copilot</span>
-                    <span class="skill-tag">AI Product Integration</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <rect x="2" y="5" width="20" height="14" rx="2" />
-                        <line x1="2" y1="10" x2="22" y2="10" />
-                    </svg>
-                </div>
-                <h3>Payments &amp; E-Commerce</h3>
-                <p>Integrating secure payment gateways with subscription management, recurring billing, and end-to-end storefront architecture.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Stripe</span>
-                    <span class="skill-tag">PayPal</span>
-                    <span class="skill-tag">Paymob</span>
-                    <span class="skill-tag">Fawry</span>
-                    <span class="skill-tag">Subscriptions</span>
-                </div>
-            </div>
-            <div class="skill-card reveal">
-                <div class="skill-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                        <polyline points="9 12 11 14 15 10" />
-                    </svg>
-                </div>
-                <h3>Testing &amp; Quality</h3>
-                <p>Building reliable systems through unit, widget, and integration testing with TDD discipline and disciplined code review.</p>
-                <div class="skill-tags">
-                    <span class="skill-tag">Unit Testing</span>
-                    <span class="skill-tag">Widget Tests</span>
-                    <span class="skill-tag">Integration</span>
-                    <span class="skill-tag">TDD</span>
-                    <span class="skill-tag">Mockito</span>
-                </div>
-            </div>
-        </div>
+    <section class="section experience" id="experience" aria-labelledby="experience-title">
+      <h2 class="section__title" id="experience-title">Experience</h2>
+      <ol class="timeline">
+        <li class="timeline__item">
+          <p class="timeline__date">Jul 2026 - Present</p>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Senior Flutter Developer</h3>
+            <p class="timeline__org">Sadeema Company, Remote</p>
+            <p>Flutter lead on Hessaty (<span lang="ar" dir="rtl">حصتي</span>), a published classroom-management app for teachers, owning architecture, feature delivery, and release quality.</p>
+            <ul class="bullets">
+              <li>Own a Clean Architecture + BLoC codebase spanning 13 feature modules, from lesson lifecycle, attendance, and homework to portfolios, reports, and subscriptions.</li>
+              <li>Engineered an offline-first sync layer for teacher portfolios: local edits survive app restarts, upload in the background with debouncing and automatic retry on reconnect, and merge with the server copy without ever losing data.</li>
+              <li>Built a format-agnostic report-export engine where each report is defined once and rendered to both PDF and a natively generated right-to-left Excel (.xlsx) file, powering class, exam, learning-pattern, and student-performance reports.</li>
+              <li>Delivered auto-graded exams with multimedia and math-equation questions, behavior tracking, bulk grading, and WebView-based subscription checkout, shipped through regular Play Store and App Store releases.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <p class="timeline__date">Jan 2026 - Jul 2026</p>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Senior Flutter Developer &amp; Software Team Lead</h3>
+            <p class="timeline__org">Orange Bay Company, Remote</p>
+            <p>Led the end-to-end software delivery for a multi-platform hospitality ecosystem, with direct responsibility for infrastructure, technical direction, delivery management, and team performance.</p>
+            <ul class="bullets">
+              <li>Led a cross-functional team of six covering Flutter engineering, web development, design, and backend integration, overseeing sprint planning, task delegation, code review, and quality assurance.</li>
+              <li>Owned architecture and technical decision-making across the O-Marina ecosystem: three web applications (admin dashboard, owner platform, customer platform) and two mobile applications. Ensured cross-platform consistency, a shared design language, and unified data contracts.</li>
+              <li>Established and managed foundational infrastructure for 26+ projects: domain configuration, Cloudflare setup and security, and a repeatable delivery process.</li>
+              <li>Directed delivery of orangebayhurghada.com, translating business goals into technical specifications and release milestones.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <p class="timeline__date">Jun 2023 - Sep 2025</p>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Flutter Developer</h3>
+            <p class="timeline__org">Sadeema Company, Remote</p>
+            <p>Delivered multiple production Flutter applications for clients across regional markets, owning feature delivery from architecture through release.</p>
+            <ul class="bullets">
+              <li>Architected and shipped multiple Flutter applications using Clean Architecture and BLoC, with stable API integration, multi-language localization, and consistent performance across device tiers.</li>
+              <li>Reduced application load times by approximately 40% through state management refactors, asset optimization, and disciplined caching strategies.</li>
+              <li>Established reusable architecture templates that accelerated onboarding of new features and improved maintainability across client projects.</li>
+            </ul>
+          </div>
+        </li>
+        <li class="timeline__item">
+          <p class="timeline__date">Dec 2022 - Jun 2023</p>
+          <div class="timeline__body">
+            <h3 class="timeline__role">Flutter Development Instructor</h3>
+            <p class="timeline__org">GDSC, Cairo University</p>
+            <p>Mentored 20+ developers in BLoC, Clean Architecture, and clean-code practices through structured workshops.</p>
+          </div>
+        </li>
+      </ol>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="projects-container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Selected Work</div>
-                <h2 class="section-title">Products I've shipped &amp; teams I've led</h2>
-                <p class="section-lede">
-                    A mix of multi-platform ecosystems led at Orange Bay, independent full-stack builds, and
-                    published mobile apps with thousands of active users.
-                </p>
-            </div>
-            <div class="projects-grid">
-
-                <!-- O-Marina (Flagship) -->
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="platform-label">3 web &middot; 2 mobile</span>
-                        <div class="platform-stack">
-                            <div class="stack-browser">
-                                <div class="stack-browser-mini">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="stack-browser-body">
-                                    <div class="stack-browser-row">
-                                        <div class="accent-tile"></div>
-                                        <div></div>
-                                        <div></div>
-                                    </div>
-                                    <div class="stack-browser-row">
-                                        <div></div>
-                                        <div class="accent-tile"></div>
-                                        <div></div>
-                                    </div>
-                                    <div class="stack-browser-row">
-                                        <div></div>
-                                        <div></div>
-                                        <div class="accent-tile"></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="stack-phones">
-                                <div class="stack-phone">
-                                    <div class="stack-phone-screen">
-                                        <div></div><div></div><div></div><div></div>
-                                    </div>
-                                </div>
-                                <div class="stack-phone">
-                                    <div class="stack-phone-screen">
-                                        <div></div><div></div><div></div><div></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta-row">
-                            <span class="project-badge flagship">Flagship &middot; Active</span>
-                            <span class="project-role">Tech Lead &middot; Architecture &middot; Delivery</span>
-                        </div>
-                        <h3 class="project-title">O-Marina Ecosystem</h3>
-                        <p class="project-subtitle">Multi-platform hospitality platform &middot; Orange Bay</p>
-                        <p class="project-description">
-                            A large-scale platform spanning three web applications (admin dashboard, owner platform,
-                            customer platform) and two mobile applications, with additional systems in active development.
-                            I own architecture, cross-platform consistency, and delivery coordination across all five surfaces.
-                        </p>
-                        <div class="project-impact">
-                            <div class="impact-stat">
-                                <span class="impact-value">5</span>
-                                <span class="impact-label">Surfaces</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">6</span>
-                                <span class="impact-label">Engineers Led</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">26+</span>
-                                <span class="impact-label">Projects</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span>Flutter</span>
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>Clean Architecture</span>
-                            <span>BLoC</span>
-                            <span>Cloudflare</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://o-marina.com/en" target="_blank" rel="noopener" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Visit Live Site
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Aura (Independent Full-Stack) -->
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="platform-label">Live storefront</span>
-                        <div class="browser-frame">
-                            <div class="browser-bar">
-                                <div class="browser-dots">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="browser-url">aura-frontend-ruddy-alpha.vercel.app</div>
-                            </div>
-                            <div class="browser-body">
-                                <div class="browser-row">
-                                    <div class="browser-block accent"></div>
-                                </div>
-                                <div class="browser-row">
-                                    <div class="browser-block tall"></div>
-                                    <div class="browser-block tall"></div>
-                                    <div class="browser-block tall"></div>
-                                </div>
-                                <div class="browser-row">
-                                    <div class="browser-block short"></div>
-                                </div>
-                                <div class="browser-row">
-                                    <div class="browser-block tile"></div>
-                                    <div class="browser-block tile"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta-row">
-                            <span class="project-badge independent">Independent Build</span>
-                            <span class="project-role">Solo &middot; Full-Stack &middot; Live</span>
-                        </div>
-                        <h3 class="project-title">Aura</h3>
-                        <p class="project-subtitle">Full-stack e-commerce ecosystem &middot; built independently</p>
-                        <p class="project-description">
-                            A self-initiated, end-to-end e-commerce product designed as a complete ecosystem
-                            rather than a single application. Live storefront and admin dashboard built solo &mdash;
-                            architecture, infrastructure, frontend, backend, and deployment. Mobile companion and
-                            AI recommendations engine in active development.
-                        </p>
-                        <div class="project-tech">
-                            <span>Next.js</span>
-                            <span>Supabase</span>
-                            <span>PostgreSQL</span>
-                            <span>Vercel</span>
-                            <span>Stripe</span>
-                            <span>AI Recommendations</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://aura-frontend-ruddy-alpha.vercel.app" target="_blank" rel="noopener" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Visit Live Site
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Orange Bay Hurghada -->
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="platform-label">Web platform</span>
-                        <div class="browser-frame">
-                            <div class="browser-bar">
-                                <div class="browser-dots">
-                                    <span></span><span></span><span></span>
-                                </div>
-                                <div class="browser-url">orangebayhurghada.com</div>
-                            </div>
-                            <div class="browser-body">
-                                <div class="browser-row">
-                                    <div class="browser-block accent"></div>
-                                    <div class="browser-block short"></div>
-                                </div>
-                                <div class="browser-row">
-                                    <div class="browser-block tall"></div>
-                                </div>
-                                <div class="browser-row">
-                                    <div class="browser-block tile"></div>
-                                    <div class="browser-block tile"></div>
-                                    <div class="browser-block tile"></div>
-                                </div>
-                                <div class="browser-row">
-                                    <div class="browser-block short"></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta-row">
-                            <span class="project-badge live">Live</span>
-                            <span class="project-role">Delivery Lead &middot; Stakeholder Mgmt</span>
-                        </div>
-                        <h3 class="project-title">orangebayhurghada.com</h3>
-                        <p class="project-subtitle">Hospitality web platform &middot; Orange Bay</p>
-                        <p class="project-description">
-                            Public-facing hospitality platform &mdash; I directed delivery, coordinating between
-                            stakeholders, designers, and developers to translate business goals into shipped features.
-                            Integrated into the wider Orange Bay product ecosystem with focus on scalability, SEO,
-                            and performance.
-                        </p>
-                        <div class="project-tech">
-                            <span>Web Platform</span>
-                            <span>SEO</span>
-                            <span>Performance</span>
-                            <span>Cloudflare</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://orangebayhurghada.com" target="_blank" rel="noopener" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                                    <polyline points="15 3 21 3 21 9" />
-                                    <line x1="10" y1="14" x2="21" y2="3" />
-                                </svg>
-                                Visit Site
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Tasesse App -->
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="platform-label">iOS &middot; Android</span>
-                        <div class="project-mockup">
-                            <div class="phone-frame">
-                                <img src="images/tassese1.webp" alt="Tasesse app screenshot - course list">
-                            </div>
-                            <div class="phone-frame">
-                                <img src="images/tassese2.webp" alt="Tasesse app screenshot - quiz interface">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta-row">
-                            <span class="project-badge published">Published</span>
-                            <span class="project-role">Architecture &middot; Delivery</span>
-                        </div>
-                        <h3 class="project-title">Tasesse</h3>
-                        <p class="project-subtitle">Cross-platform educational app &middot; 10K+ users</p>
-                        <p class="project-description">
-                            Multi-role educational platform supporting students, parents, and institutions.
-                            Scalable course management with interactive quizzes, collaborative resource sharing,
-                            and real-time analytics tracking 50+ performance metrics. Integrated Stripe and Paymob
-                            for subscription management.
-                        </p>
-                        <div class="project-impact">
-                            <div class="impact-stat">
-                                <span class="impact-value">10K+</span>
-                                <span class="impact-label">Active Users</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">50+</span>
-                                <span class="impact-label">Metrics Tracked</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">3</span>
-                                <span class="impact-label">User Roles</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span>Flutter</span>
-                            <span>BLoC</span>
-                            <span>Stripe</span>
-                            <span>Paymob</span>
-                            <span>Firebase</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.edu_tasses.tasesse_app"
-                                target="_blank" rel="noopener" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                                </svg>
-                                Play Store
-                            </a>
-                            <a href="https://apps.apple.com/eg/app/taseese-%D8%AA%D8%A3%D8%B3%D9%8A%D8%B3/id6477544252"
-                                target="_blank" rel="noopener" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-                                </svg>
-                                App Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Mideo App -->
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="platform-label">iOS &middot; Android</span>
-                        <div class="project-mockup">
-                            <div class="phone-frame">
-                                <img src="images/mideo1.webp" alt="Mideo app screenshot - medical learning">
-                            </div>
-                            <div class="phone-frame">
-                                <img src="images/mideo2.webp" alt="Mideo app screenshot - appointments">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta-row">
-                            <span class="project-badge published">Published</span>
-                            <span class="project-role">Architecture &middot; Real-time</span>
-                        </div>
-                        <h3 class="project-title">Mideo</h3>
-                        <p class="project-subtitle">Medical learning &amp; healthcare app &middot; 5K+ professionals</p>
-                        <p class="project-description">
-                            Full-featured medical platform combining learning, appointment management, and
-                            healthcare services. Real-time notifications, appointment booking, and integrated
-                            payment processing handling 200+ daily transactions. Data-driven architecture
-                            enabling personalized learning insights.
-                        </p>
-                        <div class="project-impact">
-                            <div class="impact-stat">
-                                <span class="impact-value">5K+</span>
-                                <span class="impact-label">Professionals</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">200+</span>
-                                <span class="impact-label">Daily Tx</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">Real-time</span>
-                                <span class="impact-label">Notifications</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span>Flutter</span>
-                            <span>Clean Architecture</span>
-                            <span>Firebase</span>
-                            <span>FCM</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.medkingApp.mideo" target="_blank" rel="noopener"
-                                class="project-link">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                                </svg>
-                                Play Store
-                            </a>
-                            <a href="https://apps.apple.com/app/mideo-app/id6749076532" target="_blank" rel="noopener"
-                                class="project-link">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-                                </svg>
-                                App Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- MedKing App -->
-                <div class="project-card reveal">
-                    <div class="project-image">
-                        <span class="platform-label">iOS &middot; Android</span>
-                        <div class="project-mockup">
-                            <div class="phone-frame">
-                                <img src="images/medking1.webp" alt="MedKing app screenshot - courses">
-                            </div>
-                            <div class="phone-frame">
-                                <img src="images/medking2.webp" alt="MedKing app screenshot - video lectures">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="project-content">
-                        <div class="project-meta-row">
-                            <span class="project-badge published">Published</span>
-                            <span class="project-role">Modular Architecture</span>
-                        </div>
-                        <h3 class="project-title">MedKing</h3>
-                        <p class="project-subtitle">Medical education platform &middot; 500+ courses</p>
-                        <p class="project-description">
-                            Comprehensive medical education platform delivering expert-led courses with video
-                            lectures and interactive assessments. Scalable learning ecosystem with discussion
-                            forums, structured learning paths, and real-time content updates &mdash; built on a
-                            modular architecture for performance across medical specialties.
-                        </p>
-                        <div class="project-impact">
-                            <div class="impact-stat">
-                                <span class="impact-value">500+</span>
-                                <span class="impact-label">Courses</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">Modular</span>
-                                <span class="impact-label">Architecture</span>
-                            </div>
-                            <div class="impact-stat">
-                                <span class="impact-value">Real-time</span>
-                                <span class="impact-label">Updates</span>
-                            </div>
-                        </div>
-                        <div class="project-tech">
-                            <span>Flutter</span>
-                            <span>Modular Architecture</span>
-                            <span>Video Streaming</span>
-                            <span>Real-time Sync</span>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.MedKingAppLLC.MedKing"
-                                target="_blank" rel="noopener" class="project-link">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                                </svg>
-                                Play Store
-                            </a>
-                            <a href="https://apps.apple.com/us/app/medking/id6664068510" target="_blank" rel="noopener"
-                                class="project-link">
-                                <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path
-                                        d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-                                </svg>
-                                App Store
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <section class="section expertise" id="expertise" aria-labelledby="expertise-title">
+      <header class="section__head">
+        <h2 class="section__title" id="expertise-title">Expertise</h2>
+        <p class="section__lede">Depth in Flutter architecture, with the data, media, delivery, and leadership layers it takes to run apps in production.</p>
+      </header>
+      <div class="skills">
+        <section class="skill" aria-labelledby="sk-mobile">
+          <h3 id="sk-mobile">Mobile &amp; State Management</h3>
+          <p>Flutter, Dart, Kotlin, Native Integrations, Deep Linking, BLoC (with bloc_concurrency transformers), Riverpod, Provider</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-arch">
+          <h3 id="sk-arch">Architecture &amp; Patterns</h3>
+          <p>Clean Architecture, Modular Package Architecture (in-house core packages), Design Systems, MVVM, BLoC, Repository, DI, SOLID, Functional Error Handling (dartz / fpdart)</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-data">
+          <h3 id="sk-data">Data &amp; Offline</h3>
+          <p>Offline-First Sync &amp; Conflict Resolution, Stale-While-Revalidate &amp; Cache-Aside (TTL), Encrypted Cache, PostgreSQL, Hive, PDF and native RTL Excel generation</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-backend">
+          <h3 id="sk-backend">Backend &amp; Full-Stack</h3>
+          <p>REST, GraphQL, Supabase, Firebase, WebSocket, Dio, Next.js, React, Django</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-media">
+          <h3 id="sk-media">Media &amp; Real-Time</h3>
+          <p>HLS Streaming (BunnyCDN) with Playback KPIs, Jitsi Video Conferencing via WebView</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-obs">
+          <h3 id="sk-obs">Observability &amp; Security</h3>
+          <p>JWT with Silent Token Refresh, Google &amp; Apple Sign-In, Secure Storage, Firebase Crashlytics, Analytics &amp; Performance, AppsFlyer, Talker logging</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-delivery">
+          <h3 id="sk-delivery">Delivery &amp; Quality</h3>
+          <p>Cloudflare (DNS, CDN, Security Policies), Vercel, Codemagic, GitHub Actions, Firebase App Distribution, Store Deployment, Unit, Widget, and Integration Testing, TDD, Mockito</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-payments">
+          <h3 id="sk-payments">Payments</h3>
+          <p>Stripe, PayPal, Paymob, Fawry, WebView Payment Flows with Status Verification, Subscriptions</p>
+        </section>
+        <section class="skill" aria-labelledby="sk-lead">
+          <h3 id="sk-lead">Leadership</h3>
+          <p>Team Leadership, Sprint Planning, Code Review, Technical Roadmapping, Stakeholder Communication, Mentorship</p>
+        </section>
+      </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-header reveal">
-            <div class="section-eyebrow">Career</div>
-            <h2 class="section-title">Where I've shipped</h2>
-        </div>
-        <div class="experience-timeline">
-            <div class="experience-item reveal">
-                <div class="experience-date">Jan 2026 &mdash; Present</div>
-                <h3 class="experience-role">Senior Flutter Developer &amp; Software Team Lead</h3>
-                <p class="experience-company">Orange Bay Company &middot; Remote</p>
-                <p class="experience-description">
-                    Leading end-to-end software delivery for a multi-platform hospitality ecosystem. Direct
-                    responsibility for infrastructure, technical direction, delivery, and team performance
-                    across a growing portfolio of products.
-                </p>
-                <ul class="experience-highlights">
-                    <li>Established and manage foundational infrastructure for 26+ projects across the O-Marina ecosystem and beyond &mdash; domain acquisition, Cloudflare setup and security, and a repeatable delivery process.</li>
-                    <li>Lead a cross-functional team of six covering Flutter, web, design, and backend &mdash; sprint planning, code review, and QA across all delivery streams.</li>
-                    <li>Own architecture across O-Marina (three web apps + two mobile apps) ensuring cross-platform consistency, shared design language, and unified data contracts.</li>
-                    <li>Introduced AI-augmented development across the team using Claude (primary), Cursor, and Copilot &mdash; accelerating scaffolding, code review, and debugging without compromising quality.</li>
-                    <li>Defined branching, review, and release standards that measurably reduced regressions and accelerated cycle time.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item reveal">
-                <div class="experience-date">Jun 2023 &mdash; Sep 2025</div>
-                <h3 class="experience-role">Flutter Developer</h3>
-                <p class="experience-company">Sadeema Company &middot; Remote</p>
-                <p class="experience-description">
-                    Delivered multiple production Flutter applications for clients across regional markets,
-                    owning feature delivery from architecture through release.
-                </p>
-                <ul class="experience-highlights">
-                    <li>Architected and shipped multiple Flutter apps using Clean Architecture and BLoC, with stable API integration and multi-language localization.</li>
-                    <li>Reduced app load times by approximately 40% through state management refactors, asset optimization, and disciplined caching.</li>
-                    <li>Established reusable architecture templates that accelerated onboarding of new features across client projects.</li>
-                </ul>
-            </div>
-
-            <div class="experience-item reveal">
-                <div class="experience-date">Dec 2022 &mdash; Jun 2023</div>
-                <h3 class="experience-role">Flutter Development Instructor</h3>
-                <p class="experience-company">GDSC &mdash; Cairo University</p>
-                <p class="experience-description">
-                    Mentored 20+ junior developers in BLoC architecture, clean coding practices, and advanced
-                    UI implementation through structured workshops. Published recorded training sessions on
-                    YouTube as an open learning resource for the wider Flutter community.
-                </p>
-            </div>
-
-            <div class="experience-item reveal">
-                <div class="experience-date">Nov 2022 &mdash; Jan 2023</div>
-                <h3 class="experience-role">Flutter Developer (Internship)</h3>
-                <p class="experience-company">Pure Soft &middot; Cairo, Egypt</p>
-                <p class="experience-description">
-                    Built responsive cross-platform interfaces optimized for varied device specifications.
-                    Implemented SQLite-backed local persistence with advanced navigation patterns in
-                    production-grade prototypes.
-                </p>
-            </div>
-        </div>
+    <section class="section writing" id="writing" aria-labelledby="writing-title">
+      <header class="section__head">
+        <h2 class="section__title" id="writing-title">Writing</h2>
+        <p class="section__lede">Practical patterns from production Flutter work, published on Medium.</p>
+      </header>
+      <ol class="articles">
+        <li class="article article--featured"><a href="https://medium.com/@ahmedsherif4175/most-flutter-apps-rot-after-six-months-its-rarely-flutter-s-fault-0831e748b04b" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2026-06-02">Jun 2026</time>
+          <h3 class="article__title">Most Flutter Apps Rot After Six Months. It's Rarely Flutter's Fault</h3>
+          <p class="article__summary">After half a year, the build files balloon, the logic leaks into the UI, and nobody wants to touch the codebase.</p>
+        </a></li>
+        <li class="article"><a href="https://medium.com/@ahmedsherif4175/stop-copy-pasting-textstyles-build-a-typography-system-that-actually-scales-321071f5e6f1" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2026-02-01">Feb 2026</time>
+          <h3 class="article__title">Stop Copy-Pasting TextStyles: Build a Typography System That Actually Scales</h3>
+          <p class="article__summary">A typography system that handles mobile, tablet, and theming automatically.</p>
+        </a></li>
+        <li class="article"><a href="https://medium.com/@ahmedsherif4175/building-scalable-flutter-apps-a-deep-dive-into-clean-architecture-with-feature-first-organization-87b696ed883f" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2026-01-27">Jan 2026</time>
+          <h3 class="article__title">Building Scalable Flutter Apps: A Deep Dive into Clean Architecture with Feature-First Organization</h3>
+          <p class="article__summary">Structuring Flutter projects for maintainability, scalability, and team collaboration.</p>
+        </a></li>
+        <li class="article"><a href="https://medium.com/@ahmedsherif4175/in-flutter-why-is-animation-important-and-why-was-writing-it-so-exhausting-6114413e02e3" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2025-11-15">Nov 2025</time>
+          <h3 class="article__title">In Flutter, Why Is Animation Important and Why Was Writing It So Exhausting?</h3>
+          <p class="article__summary">Animation is not a nice-to-have; it is a core part of an app's visual experience.</p>
+        </a></li>
+        <li class="article"><a href="https://medium.com/@ahmedsherif4175/building-a-robust-base-local-data-source-in-flutter-with-hive-60e243009f7f" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2025-11-11">Nov 2025</time>
+          <h3 class="article__title">Building a Robust Base Local Data Source in Flutter with Hive</h3>
+          <p class="article__summary">One reusable Hive-backed data source with offline support and per-item expiry, instead of repeating storage code in every feature.</p>
+        </a></li>
+        <li class="article"><a href="https://medium.com/@ahmedsherif4175/implementing-pagination-using-bloc-and-clean-architecture-3828f3030d62" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2023-08-04">Aug 2023</time>
+          <h3 class="article__title">Implementing Pagination Using BLoC and Clean Architecture</h3>
+          <p class="article__summary">Wiring paginated fetching through a BLoC, repository, and use case, with Either-based error handling.</p>
+        </a></li>
+        <li class="article"><a href="https://medium.com/@ahmedsherif4175/easiest-way-to-cache-data-in-flutter-a-step-by-step-guide-7e983d64198b" target="_blank" rel="noopener">
+          <time class="article__date" datetime="2023-07-31">Jul 2023</time>
+          <h3 class="article__title">Easiest Way to Cache Data in Flutter: A Step-by-Step Guide</h3>
+          <p class="article__summary">Caching API responses locally with an expiry date, and refreshing from the server only when the cache goes stale.</p>
+        </a></li>
+      </ol>
     </section>
 
-    <!-- Publications Section -->
-    <section id="publications">
-        <div class="publications-container">
-            <div class="section-header reveal">
-                <div class="section-eyebrow">Writing</div>
-                <h2 class="section-title">Publications</h2>
-                <p class="section-lede">
-                    Sharing practical patterns from production work &mdash; the kind of engineering writing
-                    I wish I'd had earlier in my career.
-                </p>
-            </div>
-            <div class="publications-grid">
-                <a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" class="publication-card reveal">
-                    <div class="publication-meta">Medium &middot; Flutter</div>
-                    <h3 class="publication-title">Easiest Way to Cache Data in Flutter: A Step-by-Step Guide</h3>
-                    <p class="publication-summary">
-                        A pragmatic walkthrough of building a clean, reliable caching layer in Flutter &mdash;
-                        moving past tutorial-grade snippets into something you'd actually ship.
-                    </p>
-                    <span class="publication-arrow">
-                        Read on Medium
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                    </span>
-                </a>
-                <a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" class="publication-card reveal">
-                    <div class="publication-meta">Medium &middot; Architecture</div>
-                    <h3 class="publication-title">Implementing Pagination using BLoC and Clean Architecture</h3>
-                    <p class="publication-summary">
-                        How to wire pagination through your BLoC, repository, and data source layers without
-                        leaking state &mdash; with the trade-offs that show up only at scale.
-                    </p>
-                    <span class="publication-arrow">
-                        Read on Medium
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12" />
-                            <polyline points="12 5 19 12 12 19" />
-                        </svg>
-                    </span>
-                </a>
-            </div>
+    <section class="section about" id="about" aria-labelledby="about-title">
+      <div class="about__prose">
+        <h2 class="section__title" id="about-title">About</h2>
+        <p>Senior Flutter Developer with 4+ years of experience architecting and shipping production apps in education, healthcare, and hospitality.</p>
+        <p>Deep expertise in Dart, Clean Architecture, and modular package design, with hands-on depth in offline-first sync, multi-strategy caching, and instrumented media streaming. Four apps published on Google Play and the App Store.</p>
+        <p>Led a six-person cross-functional team at Orange Bay across a five-surface hospitality ecosystem, and currently lead Flutter development of Hessaty at Sadeema.</p>
+      </div>
+      <dl class="facts">
+        <div>
+          <dt>Location</dt>
+          <dd>Cairo, Egypt, Remote</dd>
         </div>
+        <div>
+          <dt>Education</dt>
+          <dd>Bachelor of Arts in Modern Greek Language, Cairo University<br><span class="facts__sub">Oct 2019 - Jun 2023</span></dd>
+        </div>
+        <div>
+          <dt>Languages</dt>
+          <dd>Arabic, Native<br>English, Upper Intermediate (Professional Working Proficiency)<br>Greek, Communicator Level</dd>
+        </div>
+      </dl>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-header reveal">
-            <div class="section-eyebrow">Get in Touch</div>
-        </div>
-        <h2 class="contact-cta reveal">
-            Let's build something<br><span class="highlight">that scales.</span>
-        </h2>
-        <p class="contact-email reveal">
-            Open to senior engineering &amp; tech lead roles. Reach me at
-            <a href="mailto:ahmedsherif4175@gmail.com">ahmedsherif4175@gmail.com</a>
-        </p>
-        <div class="social-links reveal">
-            <a href="https://github.com/AhmedSherif4" target="_blank" rel="noopener" class="social-link" aria-label="GitHub">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                </svg>
-            </a>
-            <a href="https://linkedin.com/in/ahmed-sherif-516a5a213" target="_blank" rel="noopener" class="social-link"
-                aria-label="LinkedIn">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                </svg>
-            </a>
-            <a href="https://www.youtube.com/@ahmedsherif948" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
-                </svg>
-            </a>
-            <a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" class="social-link" aria-label="Medium">
-                <svg viewBox="0 0 24 24" fill="currentColor">
-                    <path
-                        d="M13.54 12a6.8 6.8 0 01-6.77 6.82A6.8 6.8 0 010 12a6.8 6.8 0 016.77-6.82A6.8 6.8 0 0113.54 12zM20.96 12c0 3.54-1.51 6.41-3.38 6.41s-3.38-2.87-3.38-6.41 1.51-6.41 3.38-6.41 3.38 2.87 3.38 6.41zM24 12c0 3.17-.53 5.75-1.19 5.75s-1.19-2.58-1.19-5.75.53-5.75 1.19-5.75S24 8.83 24 12z" />
-                </svg>
-            </a>
-        </div>
+    <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <h2 class="contact__title" id="contact-title">Open to senior engineering &amp; tech lead roles.</h2>
+      <a class="contact__email" href="mailto:ahmedsherif4175@gmail.com">ahmedsherif4175@gmail.com</a>
+      <ul class="socials">
+        <li><a href="https://github.com/AhmedSherif4" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
+        <li><a href="https://www.linkedin.com/in/ahmed-sherif01" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
+        <li><a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" aria-label="Medium"><svg class="icon" aria-hidden="true"><use href="#i-medium"/></svg></a></li>
+        <li><a href="https://www.youtube.com/@ahmedsherif948" target="_blank" rel="noopener" aria-label="YouTube"><svg class="icon" aria-hidden="true"><use href="#i-youtube"/></svg></a></li>
+      </ul>
     </section>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Ahmed Sherif &middot; Senior Software Engineer &amp; Team Lead &middot; Cairo, Egypt</p>
-    </footer>
+  <footer class="site-footer">
+    <p>&copy; 2026 Ahmed Sherif</p>
+  </footer>
 
-    <script>
-        // Cursor glow effect
-        const cursor = document.getElementById('cursor');
-        let mouseX = 0, mouseY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            cursor.style.left = mouseX + 'px';
-            cursor.style.top = mouseY + 'px';
-            cursor.style.opacity = '1';
-        });
-
-        document.addEventListener('mouseleave', () => {
-            cursor.style.opacity = '0';
-        });
-
-        // Mobile menu toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navLinks = document.getElementById('navLinks');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-
-        function openMenu() {
-            navLinks.classList.add('active');
-            menuToggle.classList.add('active');
-            mobileOverlay.classList.add('active');
-            document.body.classList.add('menu-open');
-        }
-
-        function closeMenu() {
-            navLinks.classList.remove('active');
-            menuToggle.classList.remove('active');
-            mobileOverlay.classList.remove('active');
-            document.body.classList.remove('menu-open');
-        }
-
-        menuToggle.addEventListener('click', () => {
-            if (navLinks.classList.contains('active')) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
-        });
-
-        // Close menu when clicking overlay
-        mobileOverlay.addEventListener('click', closeMenu);
-
-        // Close menu when clicking a link
-        navLinks.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        // Scroll reveal animation
-        const revealElements = document.querySelectorAll('.reveal');
-
-        const revealOnScroll = () => {
-            revealElements.forEach(el => {
-                const elementTop = el.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (elementTop < windowHeight) {
-                    el.classList.add('visible');
-                }
-            });
-        };
-
-        window.addEventListener('scroll', revealOnScroll);
-        revealOnScroll(); // Initial check
-
-        // Enhanced smooth scroll for anchor links
-        function smoothScrollTo(targetElement, duration = 1000) {
-            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - 80;
-            const startPosition = window.pageYOffset;
-            const distance = targetPosition - startPosition;
-            let startTime = null;
-
-            function easeInOutCubic(t) {
-                return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
-            }
-
-            function animation(currentTime) {
-                if (startTime === null) startTime = currentTime;
-                const timeElapsed = currentTime - startTime;
-                const progress = Math.min(timeElapsed / duration, 1);
-                const ease = easeInOutCubic(progress);
-
-                window.scrollTo(0, startPosition + distance * ease);
-
-                if (timeElapsed < duration) {
-                    requestAnimationFrame(animation);
-                }
-            }
-
-            requestAnimationFrame(animation);
-        }
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId === '#' || targetId === '') return;
-
-                const target = document.querySelector(targetId);
-                if (target) {
-                    e.preventDefault();
-                    smoothScrollTo(target, 800);
-
-                    // Update active state on nav links
-                    document.querySelectorAll('.nav-links a').forEach(link => {
-                        link.style.color = '';
-                    });
-                    if (this.closest('.nav-links')) {
-                        this.style.color = 'var(--accent)';
-                    }
-                }
-            });
-        });
-
-    </script>
+  <dialog class="lightbox" id="lightbox" aria-label="Screenshot viewer">
+    <div class="lightbox__frame">
+      <img class="lightbox__img" alt="">
+      <p class="lightbox__caption" aria-live="polite"></p>
+    </div>
+    <button class="icon-btn lightbox__btn lightbox__close" type="button" aria-label="Close viewer"><svg class="icon" aria-hidden="true"><use href="#i-x"/></svg></button>
+    <button class="icon-btn lightbox__btn lightbox__prev" type="button" aria-label="Previous screenshot"><svg class="icon" aria-hidden="true"><use href="#i-caret-left"/></svg></button>
+    <button class="icon-btn lightbox__btn lightbox__next" type="button" aria-label="Next screenshot"><svg class="icon" aria-hidden="true"><use href="#i-caret-right"/></svg></button>
+  </dialog>
 </body>
 </html>
