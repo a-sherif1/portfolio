@@ -60,6 +60,21 @@
     header.classList.toggle('is-scrolled', !entry.isIntersecting),
   ).observe(sentinel);
 
+  // Scroll reveals: elements entering together are staggered so a row or grid reads in order.
+  const aosObserver = new IntersectionObserver(
+    (entries) => {
+      entries
+        .filter((entry) => entry.isIntersecting)
+        .forEach((entry, i) => {
+          entry.target.style.setProperty('--aos-delay', `${Math.min(i * 60, 300)}ms`);
+          entry.target.classList.add('aos-animate');
+          aosObserver.unobserve(entry.target);
+        });
+    },
+    { rootMargin: '0px 0px -10% 0px', threshold: 0.1 },
+  );
+  document.querySelectorAll('[data-aos]').forEach((el) => aosObserver.observe(el));
+
   // Current section in the nav
   const navAnchors = [...navLinks.querySelectorAll('a[href^="#"]')];
   const sectionObserver = new IntersectionObserver(

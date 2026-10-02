@@ -23,7 +23,9 @@
   <meta name="theme-color" content="#f3f4f1" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#13241d" media="(prefers-color-scheme: dark)">
 
-  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="icon" href="favicon.ico?v=2" sizes="32x32">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=2">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png?v=2">
   <link rel="preload" href="assets/fonts/playfair-display-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/geist-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/img/me-800.webp" as="image" type="image/webp" imagesrcset="assets/img/me-480.webp 480w, assets/img/me-800.webp 800w" imagesizes="(min-width: 900px) 40vw, 90vw">
@@ -128,12 +130,12 @@
     </section>
 
     <section class="section work" id="work" aria-labelledby="work-title">
-      <header class="section__head">
+      <header class="section__head" data-aos="fade-up">
         <h2 class="section__title" id="work-title">Products I've architected, led and shipped</h2>
       </header>
 
       <article class="case case--hessaty" aria-labelledby="hessaty-title">
-        <div class="case__intro">
+        <div class="case__intro" data-aos="fade-up">
           <div class="project-head">
             <img class="logo-tile" src="projects_logos/hessaty.png" width="56" height="56" alt="Hessaty logo" loading="lazy">
             <div>
@@ -147,7 +149,7 @@
             <a class="text-link" href="https://apps.apple.com/ie/app/%D8%AD%D8%B5%D8%AA%D9%8A/id6760269880" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-app-store"/></svg>App Store</a>
           </div>
         </div>
-        <div class="case__detail">
+        <div class="case__detail" data-aos="fade-up">
           <ul class="highlights">
             <li>Offline-first portfolio sync with lossless merge.</li>
             <li>PDF + native RTL Excel report engine.</li>
@@ -156,7 +158,7 @@
           </ul>
           <p class="tags">Flutter, BLoC, Clean Architecture, Hive, Offline-First, Firebase</p>
         </div>
-        <div class="shot-strip">
+        <div class="shot-strip" data-aos="zoom-in">
           <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-1.webp" width="499" height="1080" alt="Hessaty screenshot: your whole school day in one place" loading="lazy"></button>
           <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-2.webp" width="499" height="1080" alt="Hessaty screenshot: preparing a lesson in minutes" loading="lazy"></button>
           <button class="shot shot--poster" type="button" data-group="hessaty"><img src="assets/shots/hessaty/hessaty-3.webp" width="499" height="1080" alt="Hessaty screenshot: organizing lesson materials" loading="lazy"></button>
@@ -165,7 +167,7 @@
         </div>
       </article>
 
-      <article class="case case--nerdly" aria-labelledby="nerdly-title">
+      <article class="case case--nerdly" data-aos="fade-up" aria-labelledby="nerdly-title">
         <div class="project-head">
           <img class="logo-tile" src="projects_logos/nerdly.png" width="56" height="56" alt="Nerdly logo" loading="lazy">
           <div>
@@ -184,7 +186,7 @@
       </article>
 
       <article class="case case--omarina" aria-labelledby="omarina-title">
-        <div class="device-pair">
+        <div class="device-pair" data-aos="zoom-in">
           <button class="shot shot--browser" type="button" data-group="o-marina">
             <span class="browser__bar" aria-hidden="true">o-marina.com</span>
             <img src="assets/shots/o-marina/o-marina-desktop-760.webp" srcset="assets/shots/o-marina/o-marina-desktop-760.webp 760w, assets/shots/o-marina/o-marina-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/o-marina/o-marina-desktop.webp" width="1440" height="900" alt="O-Marina customer website on desktop" loading="lazy">
@@ -193,7 +195,7 @@
             <img src="assets/shots/o-marina/o-marina-mobile-360.webp" data-full="assets/shots/o-marina/o-marina-mobile.webp" width="780" height="1688" alt="O-Marina customer website on mobile" loading="lazy">
           </button>
         </div>
-        <div class="case__body">
+        <div class="case__body" data-aos="fade-up">
           <div class="project-head">
             <img class="logo-tile" src="projects_logos/o-marina.svg" width="56" height="56" alt="O-Marina logo" loading="lazy">
             <div>
@@ -214,10 +216,10 @@
         </div>
       </article>
 
-      <h3 class="work__subhead">More projects</h3>
+      <h3 class="work__subhead" data-aos="fade-up">More projects</h3>
       <div class="work-grid">
-        <article class="tile tile--web tile--wide" aria-labelledby="ob-title">
-          <div class="device-pair">
+        <article class="tile tile--web tile--wide" data-aos="fade-up" aria-labelledby="ob-title">
+          <div class="device-pair" data-aos="zoom-in">
             <button class="shot shot--browser" type="button" data-group="orange-bay">
               <span class="browser__bar" aria-hidden="true">orangebayhurghada.com</span>
               <img src="assets/shots/orange-bay/orange-bay-desktop-760.webp" srcset="assets/shots/orange-bay/orange-bay-desktop-760.webp 760w, assets/shots/orange-bay/orange-bay-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/orange-bay/orange-bay-desktop.webp" width="1440" height="900" alt="orangebayhurghada.com homepage on desktop" loading="lazy">
@@ -239,8 +241,8 @@
           </div>
         </article>
 
-        <article class="tile tile--web" aria-labelledby="aura-title">
-          <div class="device-pair">
+        <article class="tile tile--web" data-aos="fade-up" aria-labelledby="aura-title">
+          <div class="device-pair" data-aos="zoom-in">
             <button class="shot shot--browser" type="button" data-group="aura">
               <span class="browser__bar" aria-hidden="true">aurawearr.com</span>
               <img src="assets/shots/aura/aura-desktop-760.webp" srcset="assets/shots/aura/aura-desktop-760.webp 760w, assets/shots/aura/aura-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/aura/aura-desktop.webp" width="1440" height="900" alt="Aura storefront homepage on desktop" loading="lazy">
@@ -263,8 +265,8 @@
           </div>
         </article>
 
-        <article class="tile tile--web" aria-labelledby="graphite-title">
-          <div class="device-pair">
+        <article class="tile tile--web" data-aos="fade-up" aria-labelledby="graphite-title">
+          <div class="device-pair" data-aos="zoom-in">
             <button class="shot shot--browser" type="button" data-group="graphite">
               <span class="browser__bar" aria-hidden="true">graphite-web-silk.vercel.app</span>
               <img src="assets/shots/graphite/graphite-desktop-760.webp" srcset="assets/shots/graphite/graphite-desktop-760.webp 760w, assets/shots/graphite/graphite-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/graphite/graphite-desktop.webp" width="1440" height="900" alt="Graphite tech accessories storefront on desktop" loading="lazy">
@@ -286,8 +288,8 @@
           </div>
         </article>
 
-        <article class="tile tile--web tile--wide" aria-labelledby="you-title">
-          <div class="device-pair">
+        <article class="tile tile--web tile--wide" data-aos="fade-up" aria-labelledby="you-title">
+          <div class="device-pair" data-aos="zoom-in">
             <button class="shot shot--browser" type="button" data-group="you">
               <span class="browser__bar" aria-hidden="true">you-website-navy.vercel.app</span>
               <img src="assets/shots/you/you-desktop-760.webp" srcset="assets/shots/you/you-desktop-760.webp 760w, assets/shots/you/you-desktop.webp 1440w" sizes="(min-width: 1024px) 50vw, 92vw" data-full="assets/shots/you/you-desktop.webp" width="1440" height="900" alt="YOU women's fashion storefront on desktop" loading="lazy">
@@ -309,7 +311,7 @@
           </div>
         </article>
 
-        <article class="tile tile--app tile--full" aria-labelledby="tasesse-title">
+        <article class="tile tile--app tile--full" data-aos="fade-up" aria-labelledby="tasesse-title">
           <div class="tile__body">
             <div class="project-head project-head--sm">
               <img class="logo-tile" src="projects_logos/tasesse.png" width="56" height="56" alt="Tasesse logo" loading="lazy">
@@ -332,7 +334,7 @@
           </div>
         </article>
 
-        <article class="tile tile--app" aria-labelledby="medking-title">
+        <article class="tile tile--app" data-aos="fade-up" aria-labelledby="medking-title">
           <div class="shot-row shot-row--phones">
             <button class="shot shot--phone" type="button" data-group="medking"><img src="assets/shots/medking/medking-2.webp" width="499" height="1080" alt="MedKing screenshot: home with general courses" loading="lazy"></button>
             <button class="shot shot--phone" type="button" data-group="medking"><img src="assets/shots/medking/medking-4.webp" width="499" height="1080" alt="MedKing screenshot: progress tasks" loading="lazy"></button>
@@ -354,7 +356,7 @@
           </div>
         </article>
 
-        <article class="tile tile--app" aria-labelledby="mideo-title">
+        <article class="tile tile--app" data-aos="fade-up" aria-labelledby="mideo-title">
           <div class="shot-row shot-row--phones">
             <button class="shot shot--phone" type="button" data-group="mideo"><img src="assets/shots/mideo/mideo-2.webp" width="498" height="1080" alt="Mideo screenshot: home with general courses and universities" loading="lazy"></button>
             <button class="shot shot--phone" type="button" data-group="mideo"><img src="assets/shots/mideo/mideo-1.webp" width="498" height="1080" alt="Mideo screenshot: splash screen" loading="lazy"></button>
@@ -379,9 +381,9 @@
     </section>
 
     <section class="section experience" id="experience" aria-labelledby="experience-title">
-      <h2 class="section__title" id="experience-title">Experience</h2>
+      <h2 class="section__title" id="experience-title" data-aos="fade-up">Experience</h2>
       <ol class="timeline">
-        <li class="timeline__item">
+        <li class="timeline__item" data-aos="fade-up">
           <p class="timeline__date">Jul 2026 - Present</p>
           <div class="timeline__body">
             <h3 class="timeline__role">Senior Flutter Developer</h3>
@@ -395,7 +397,7 @@
             </ul>
           </div>
         </li>
-        <li class="timeline__item">
+        <li class="timeline__item" data-aos="fade-up">
           <p class="timeline__date">Jan 2026 - Jul 2026</p>
           <div class="timeline__body">
             <h3 class="timeline__role">Senior Flutter Developer &amp; Software Team Lead</h3>
@@ -409,7 +411,7 @@
             </ul>
           </div>
         </li>
-        <li class="timeline__item">
+        <li class="timeline__item" data-aos="fade-up">
           <p class="timeline__date">Jun 2023 - Sep 2025</p>
           <div class="timeline__body">
             <h3 class="timeline__role">Flutter Developer</h3>
@@ -422,7 +424,7 @@
             </ul>
           </div>
         </li>
-        <li class="timeline__item">
+        <li class="timeline__item" data-aos="fade-up">
           <p class="timeline__date">Dec 2022 - Jun 2023</p>
           <div class="timeline__body">
             <h3 class="timeline__role">Flutter Development Instructor</h3>
@@ -434,44 +436,44 @@
     </section>
 
     <section class="section expertise" id="expertise" aria-labelledby="expertise-title">
-      <header class="section__head">
+      <header class="section__head" data-aos="fade-up">
         <h2 class="section__title" id="expertise-title">Expertise</h2>
         <p class="section__lede">Depth in Flutter architecture, with the data, media, delivery, and leadership layers it takes to run apps in production.</p>
       </header>
       <div class="skills">
-        <section class="skill" aria-labelledby="sk-mobile">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-mobile">
           <h3 id="sk-mobile">Mobile &amp; State Management</h3>
           <p>Flutter, Dart, Kotlin, Native Integrations, Deep Linking, BLoC (with bloc_concurrency transformers), Riverpod, Provider</p>
         </section>
-        <section class="skill" aria-labelledby="sk-arch">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-arch">
           <h3 id="sk-arch">Architecture &amp; Patterns</h3>
           <p>Clean Architecture, Modular Package Architecture (in-house core packages), Design Systems, MVVM, BLoC, Repository, DI, SOLID, Functional Error Handling (dartz / fpdart)</p>
         </section>
-        <section class="skill" aria-labelledby="sk-data">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-data">
           <h3 id="sk-data">Data &amp; Offline</h3>
           <p>Offline-First Sync &amp; Conflict Resolution, Stale-While-Revalidate &amp; Cache-Aside (TTL), Encrypted Cache, PostgreSQL, Hive, PDF and native RTL Excel generation</p>
         </section>
-        <section class="skill" aria-labelledby="sk-backend">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-backend">
           <h3 id="sk-backend">Backend &amp; Full-Stack</h3>
           <p>REST, GraphQL, Supabase, Firebase, WebSocket, Dio, Next.js, React, Django</p>
         </section>
-        <section class="skill" aria-labelledby="sk-media">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-media">
           <h3 id="sk-media">Media &amp; Real-Time</h3>
           <p>HLS Streaming (BunnyCDN) with Playback KPIs, Jitsi Video Conferencing via WebView</p>
         </section>
-        <section class="skill" aria-labelledby="sk-obs">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-obs">
           <h3 id="sk-obs">Observability &amp; Security</h3>
           <p>JWT with Silent Token Refresh, Google &amp; Apple Sign-In, Secure Storage, Firebase Crashlytics, Analytics &amp; Performance, AppsFlyer, Talker logging</p>
         </section>
-        <section class="skill" aria-labelledby="sk-delivery">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-delivery">
           <h3 id="sk-delivery">Delivery &amp; Quality</h3>
           <p>Cloudflare (DNS, CDN, Security Policies), Vercel, Codemagic, GitHub Actions, Firebase App Distribution, Store Deployment, Unit, Widget, and Integration Testing, TDD, Mockito</p>
         </section>
-        <section class="skill" aria-labelledby="sk-payments">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-payments">
           <h3 id="sk-payments">Payments</h3>
           <p>Stripe, PayPal, Paymob, Fawry, WebView Payment Flows with Status Verification, Subscriptions</p>
         </section>
-        <section class="skill" aria-labelledby="sk-lead">
+        <section class="skill" data-aos="fade-up" aria-labelledby="sk-lead">
           <h3 id="sk-lead">Leadership</h3>
           <p>Team Leadership, Sprint Planning, Code Review, Technical Roadmapping, Stakeholder Communication, Mentorship</p>
         </section>
@@ -479,42 +481,42 @@
     </section>
 
     <section class="section writing" id="writing" aria-labelledby="writing-title">
-      <header class="section__head">
+      <header class="section__head" data-aos="fade-up">
         <h2 class="section__title" id="writing-title">Writing</h2>
         <p class="section__lede">Practical patterns from production Flutter work, published on Medium.</p>
       </header>
-      <ol class="articles">
-        <li class="article article--featured"><a href="https://medium.com/@ahmedsherif4175/most-flutter-apps-rot-after-six-months-its-rarely-flutter-s-fault-0831e748b04b" target="_blank" rel="noopener">
+      <ol class="articles" data-aos="fade-up">
+        <li class="article article--featured" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/most-flutter-apps-rot-after-six-months-its-rarely-flutter-s-fault-0831e748b04b" target="_blank" rel="noopener">
           <time class="article__date" datetime="2026-06-02">Jun 2026</time>
           <h3 class="article__title">Most Flutter Apps Rot After Six Months. It's Rarely Flutter's Fault</h3>
           <p class="article__summary">After half a year, the build files balloon, the logic leaks into the UI, and nobody wants to touch the codebase.</p>
         </a></li>
-        <li class="article"><a href="https://medium.com/@ahmedsherif4175/stop-copy-pasting-textstyles-build-a-typography-system-that-actually-scales-321071f5e6f1" target="_blank" rel="noopener">
+        <li class="article" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/stop-copy-pasting-textstyles-build-a-typography-system-that-actually-scales-321071f5e6f1" target="_blank" rel="noopener">
           <time class="article__date" datetime="2026-02-01">Feb 2026</time>
           <h3 class="article__title">Stop Copy-Pasting TextStyles: Build a Typography System That Actually Scales</h3>
           <p class="article__summary">A typography system that handles mobile, tablet, and theming automatically.</p>
         </a></li>
-        <li class="article"><a href="https://medium.com/@ahmedsherif4175/building-scalable-flutter-apps-a-deep-dive-into-clean-architecture-with-feature-first-organization-87b696ed883f" target="_blank" rel="noopener">
+        <li class="article" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/building-scalable-flutter-apps-a-deep-dive-into-clean-architecture-with-feature-first-organization-87b696ed883f" target="_blank" rel="noopener">
           <time class="article__date" datetime="2026-01-27">Jan 2026</time>
           <h3 class="article__title">Building Scalable Flutter Apps: A Deep Dive into Clean Architecture with Feature-First Organization</h3>
           <p class="article__summary">Structuring Flutter projects for maintainability, scalability, and team collaboration.</p>
         </a></li>
-        <li class="article"><a href="https://medium.com/@ahmedsherif4175/in-flutter-why-is-animation-important-and-why-was-writing-it-so-exhausting-6114413e02e3" target="_blank" rel="noopener">
+        <li class="article" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/in-flutter-why-is-animation-important-and-why-was-writing-it-so-exhausting-6114413e02e3" target="_blank" rel="noopener">
           <time class="article__date" datetime="2025-11-15">Nov 2025</time>
           <h3 class="article__title">In Flutter, Why Is Animation Important and Why Was Writing It So Exhausting?</h3>
           <p class="article__summary">Animation is not a nice-to-have; it is a core part of an app's visual experience.</p>
         </a></li>
-        <li class="article"><a href="https://medium.com/@ahmedsherif4175/building-a-robust-base-local-data-source-in-flutter-with-hive-60e243009f7f" target="_blank" rel="noopener">
+        <li class="article" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/building-a-robust-base-local-data-source-in-flutter-with-hive-60e243009f7f" target="_blank" rel="noopener">
           <time class="article__date" datetime="2025-11-11">Nov 2025</time>
           <h3 class="article__title">Building a Robust Base Local Data Source in Flutter with Hive</h3>
           <p class="article__summary">One reusable Hive-backed data source with offline support and per-item expiry, instead of repeating storage code in every feature.</p>
         </a></li>
-        <li class="article"><a href="https://medium.com/@ahmedsherif4175/implementing-pagination-using-bloc-and-clean-architecture-3828f3030d62" target="_blank" rel="noopener">
+        <li class="article" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/implementing-pagination-using-bloc-and-clean-architecture-3828f3030d62" target="_blank" rel="noopener">
           <time class="article__date" datetime="2023-08-04">Aug 2023</time>
           <h3 class="article__title">Implementing Pagination Using BLoC and Clean Architecture</h3>
           <p class="article__summary">Wiring paginated fetching through a BLoC, repository, and use case, with Either-based error handling.</p>
         </a></li>
-        <li class="article"><a href="https://medium.com/@ahmedsherif4175/easiest-way-to-cache-data-in-flutter-a-step-by-step-guide-7e983d64198b" target="_blank" rel="noopener">
+        <li class="article" data-aos="fade-up"><a href="https://medium.com/@ahmedsherif4175/easiest-way-to-cache-data-in-flutter-a-step-by-step-guide-7e983d64198b" target="_blank" rel="noopener">
           <time class="article__date" datetime="2023-07-31">Jul 2023</time>
           <h3 class="article__title">Easiest Way to Cache Data in Flutter: A Step-by-Step Guide</h3>
           <p class="article__summary">Caching API responses locally with an expiry date, and refreshing from the server only when the cache goes stale.</p>
@@ -523,13 +525,13 @@
     </section>
 
     <section class="section about" id="about" aria-labelledby="about-title">
-      <div class="about__prose">
+      <div class="about__prose" data-aos="fade-up">
         <h2 class="section__title" id="about-title">About</h2>
         <p>Senior Flutter Developer with 4+ years of experience architecting and shipping production apps in education, healthcare, and hospitality.</p>
         <p>Deep expertise in Dart, Clean Architecture, and modular package design, with hands-on depth in offline-first sync, multi-strategy caching, and instrumented media streaming. Four apps published on Google Play and the App Store.</p>
         <p>Led a six-person cross-functional team at Orange Bay across a five-surface hospitality ecosystem, and currently lead Flutter development of Hessaty at Sadeema.</p>
       </div>
-      <dl class="facts">
+      <dl class="facts" data-aos="fade-up">
         <div>
           <dt>Location</dt>
           <dd>Cairo, Egypt, Remote</dd>
@@ -546,9 +548,9 @@
     </section>
 
     <section class="section contact" id="contact" aria-labelledby="contact-title">
-      <h2 class="contact__title" id="contact-title">Open to senior engineering &amp; tech lead roles.</h2>
-      <a class="contact__email" href="mailto:ahmedsherif4175@gmail.com">ahmedsherif4175@gmail.com</a>
-      <ul class="socials">
+      <h2 class="contact__title" data-aos="fade-up" id="contact-title">Open to senior engineering &amp; tech lead roles.</h2>
+      <a class="contact__email" data-aos="fade-up" href="mailto:ahmedsherif4175@gmail.com">ahmedsherif4175@gmail.com</a>
+      <ul class="socials" data-aos="fade-up">
         <li><a href="https://github.com/AhmedSherif4" target="_blank" rel="noopener" aria-label="GitHub"><svg class="icon" aria-hidden="true"><use href="#i-github"/></svg></a></li>
         <li><a href="https://www.linkedin.com/in/ahmed-sherif01" target="_blank" rel="noopener" aria-label="LinkedIn"><svg class="icon" aria-hidden="true"><use href="#i-linkedin"/></svg></a></li>
         <li><a href="https://medium.com/@ahmedsherif4175" target="_blank" rel="noopener" aria-label="Medium"><svg class="icon" aria-hidden="true"><use href="#i-medium"/></svg></a></li>

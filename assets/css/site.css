@@ -376,8 +376,10 @@ button {
   display: block;
 }
 
+/* Sized so "Sherif" spans exactly the width of "Ahmed". */
 .hero__line + .hero__line {
-  padding-left: 0.42em;
+  font-size: 1.1916em;
+  margin-left: -0.069em;
 }
 
 .hero__role {
@@ -490,6 +492,28 @@ button {
 
   .hero__portrait img {
     animation: unmask 0.5s var(--ease) 0.05s both;
+  }
+}
+
+/* Scroll reveals (AOS-style data-aos attributes). Hidden only when JS runs, so content never goes missing. */
+@media (prefers-reduced-motion: no-preference) {
+  .js [data-aos] {
+    opacity: 0;
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+    transition-delay: var(--aos-delay, 0ms);
+  }
+
+  .js [data-aos='fade-up'] {
+    transform: translateY(16px);
+  }
+
+  .js [data-aos='zoom-in'] {
+    transform: scale(0.97);
+  }
+
+  .js [data-aos].aos-animate {
+    opacity: 1;
+    transform: none;
   }
 }
 
